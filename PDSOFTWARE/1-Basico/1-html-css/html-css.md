@@ -1024,3 +1024,56 @@ Define el estilo `una parte`de un elemento específico. [https://developer.moz
 
 ## 23. Anatomía de una regla de CSS
 
+![Anatomia](https://i.postimg.cc/Kv9T5S86/Pseudoclases.webp)
+
+-   p{} Selector
+-   color: Propiedad
+-   rojo; El valor de la propiedad
+-   color rojo; declaración
+
+```css
+Selector { /*Define que pieza será afectada */
+	Property: Property value;  <- Declaration 
+}
+```
+
+## 24. Modelo de caja
+
+Los elementos se renderizan como cajas (contenedores) a las que se les pueden agregar ciertos estilos “Modelo de caja”.
+
+![Modelo de Caja](https://i.postimg.cc/7Y21nfm5/Caja-content.webp)
+
+-   `Margin:`puede ser un espacio externo, de la caja hacia afuera.
+-   `Border:`es la linea que define a cada uno de los elementos, puede estar o no estar. Por defecto viene transparente pero le podemos poner color y ancho.
+-   `Padding (relleno):`es un espacio interno, de la caja hacia dentro y nos ayuda a posicionar un poco el contenido de la caja.
+-   `Content:`puede ser cualquier elemento, texto, imagen, video, etc.
+-   `Width:`largo o ancho, el tamaño del contenido.
+-   `Height:`el alto que queremos que tenga.
+
+### Aqui podemos jugar con las posiciones de las cajas 
+
+![Propiedades](https://i.postimg.cc/s2h1thGW/Especificacion.webp)
+
+#### ⚡Otros casos:
+
+-   `h1 {margin: 5px 10px 5px;}`: arriba - derecha e izquierda - abajo
+    -   5px de arriba, 10px de derecha a izquierda y 5px hacia abajo.
+-   `h1 {margin: 5px 10px}`: arriba y abajo - derecha e izquierda
+    -   5px de arriba hacia abajo y 10px de derecha a izquierda.
+
+Nota: Si solo colocamos 20px el navegador entiendo que debe colocar los 20px arriba abajo ya los costados.
+
+### 👨‍💻Hay que tener cuidado con las dimensiones extra, siempre hay que tomarlas en cuenta
+
+```css
+* {/*selector universal*/
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+```
+
+## 25. Herencia
+
+
+
