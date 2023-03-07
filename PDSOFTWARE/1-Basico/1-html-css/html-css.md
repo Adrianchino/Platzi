@@ -1024,7 +1024,7 @@ Define el estilo `una parte`de un elemento específico. [https://developer.moz
 
 ## 23. Anatomía de una regla de CSS
 
-![Anatomia](https://i.postimg.cc/Kv9T5S86/Pseudoclases.webp)
+![Anatomia](https://i.postimg.cc/85yFQcbq/anatomia.png)
 
 -   p{} Selector
 -   color: Propiedad
