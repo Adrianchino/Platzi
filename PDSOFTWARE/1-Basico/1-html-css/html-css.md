@@ -1075,5 +1075,301 @@ Nota: Si solo colocamos 20px el navegador entiendo que debe colocar los 20px arr
 
 ## 25. Herencia
 
+La **herencia** en CSS es el mecanismo mediante el cual determinadas propiedades de un elemento padre se transmiten a sus hijos. De hecho, se parece mucho a la herencia genética. Si los progenitores tienen los ojos azules, los hijos seguramente también tendrán los ojos azules.
+
+### ⚡¿Por qué tiene CSS un mecanismo de herencia? 
+
+Probablemente, la manera más sencilla de responder a esta pregunta sea pensar qué pasaría si no existiera la herencia. Se deberían especificar cuestiones como la familia de fuentes, el tamaño de la fuente y el color del texto individualmente para todos y cada uno de los tipos de elemento.
+
+#### CSS nos permite tener un mayor control de esta herencia y nos ofrece 3 opciones para manejarla:
+
+-   `Inherit`que le indica a la propiedad del elemento hijo que tome la propiedad del elemento padre más cercano
+-   `Initial`es el valor que fuerza a que tome el valor por defecto que el navegador tiene definido.
+-   `Unset`es una mezcla entre la etiqueta heredar e inicial, le dice a la propiedad del elemento que tome el valor del elemento padre más cercano y si no lo encuentra, a diferencia de lo que haría heredar qué es pasarse al próximo elemento padre y así hasta encontrar un valor en un elemento padre que tenga establecida esa propiedad, unset se va directo a tomar el valor por defecto del navegador.
+
+### Ejemplo:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<title>Herencia</title>
+</head>
+<body>
+    <main>
+        <h1>I'm a title</h1>
+        <p>I'm a paragraph</p>
+    </main>
+</body>
+</html>
+```
+
+```css
+html{
+    font-size: 75%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1{
+    font-size: inherit;
+}
+```
+
+![Herencia](https://i.postimg.cc/W4QD2zFK/herencia.png)
+
+-   h1 recibe por el navegador un tamaño especifico
+-   h1 está dentro del html pero no está tomando el 75% del tamaño de fuente que le indicamos a todo nuestro html solo está tomando el tipo de fuente, así que usamos heredar en h1 para que herede esa propiedad
+
+## 26. Especificidad en selectores
+
+La especificidad en CSS es un grupo de reglas aplicadas a los selectores CSS para determinar qué estilo se aplica a un elemento. Cuanto más específico sea un selector, mayor será su valor en puntos y más probable será que esté presente en el estilo del elemento.
+
+### **¿Cómo se controla el orden al declarar CSS?**
+
+1.  Importancia:  
+    Si dos declaraciones tienen la misma importancia entonces la especificidad nos va a decir que regla se aplicará, pero si dos reglas tienen la misma especificidad es el orden el que va a decidir cual es el resultado final.
+    
+    -   El navegador va a cargar los estilos de forma distinta (primero aplica sus estilos).
+    -   Después cumple las declaraciones de las normas que vienen en nuestros estilos (todo nuestro CSS).
+    -   Por último, aplique los estilos que vienen con un `“!important”`final en nuestra hoja de estilos. NO PONERLO PORQUE SI. Hay que evitarlo porque no son buenas prácticas.
+
+2. Especificidad: De derecha a izquierda(menos importante a más importantes para el navegador).
+
+![Especifidad](https://i.postimg.cc/MKB5NTVp/espicifidad.webp)
+
+**¿Qué pasa si tenemos un conflicto?**  
+Por ejemplo: agregamos varios estilos y ahora tenemos un conflicto que romperá otros estilos, para esto tenemos una etiqueta de html con una clase que juntas su especificidad es 0,0,0,1,1 que es más importante que solo la clase; lo mismo con un id con clase 0.0.1.1.0
+
+-   [Calculadora de especificidad CSS.](https://www.codecaptain.io/tools/css-specificity-calculator)
+-   [CSS Specificity Graph Generator - Monitorear su especificidad](https://jonassebastianohlsson.com/specificity-graph/)
+    -   Colocar código CSS para monitorear su especificidad
+    -   Nota: tocar la pantalla para actualizar.
+
+**reglas de cascada**  
+![Reglas](https://i.postimg.cc/pTZrpKwL/cascada.png)
+
+3.  Orden en las fuentes (como mandas llamar los estilos o donde colocas el estilo):  
+    En los estilos, las declaraciones al final del documento anularán a las que sucedan antes en caso de conflicto. Es decir, como CSS es como una cascada, los estilos que siempre se van a aplicar son los que están hasta abajo reescribiendo los de arriba. También aplica en los .css que mandemos llamar.
+
+📌Nota: Visual Studio Code también te ayuda en esto.  
+Solo tienes que pasar el mouse por encima del selector y te dar la especificad
+
+## 27. Demostración de especificidad y orden en selectores
+
+Se pueden usar varias clases mientras no se exceda en la cantidad de clases y por cada etiqueta no se puede tener más de un ID. El id es único y específico, solo puede existir ese id en la página. Funciona para CSS y JS.
+
+El inspector de elementos regresa los estilos del mas importante al menos importante. (id, clases y hasta el ultimo las etiquetas)
+
+NOTA Las clases son genéricas y los id son únicos y específicos, no podemos tener el mismo id en dos elementos al contrario que las clases.
+
+Ejemplo:
+
+```html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header class="page-header">
+        <h1 id="page-title" class="title">Empresa</h1>
+        <nav>
+            <ul id="main-nav" class="nav">
+                <li><a href="">Home</a></li>
+                <li><a href="">Cursos</a></li>
+                <li><a href="">Instructores</a></li>
+                <li>
+                    <a href="" class="blog">Blog</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+</body>
+</html>
+
+```
+
+```css
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: purple;
+    font-family: serif;
+    margin-bottom: 10px;
+}
+
+#page-title {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.title {
+    font-size: 18px;
+    font-family: monospace;
+}
+
+#main-nav {
+    margin-top: 10px;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#main-nav li {
+    display: inline-block;
+}
+
+#main-nav a {
+    color: white;
+    background-color: #13a4a4;
+    padding: 5px;
+    border-radius: 2px;
+    text-decoration: none;
+}
+
+#main-nav .blog {
+    background-color: red;
+}
+
+```
+
+## 28. Más sobre selectores
+
+Use id's # para estilar no son buenas prácticas sobre todo porque son muy importantes para el estilo y son específicos.
+
+No es buena practica utilizar !important, estilos embebidos y utilizar id's para los estilos. Los id's son únicamente para el tema de especificidad.
+
+Todo lo podemos trabajar en CSS con clases, etiquetas y pseudo elementos.
+
+debemos:
+
+1.  Evitar usar !importante
+2.  Evitar usar estilos embebidos (Estilos en la etiqueta html).
+3.  Evite usar ID para dar estilos en CSS porque tienen más peso y dan conflictos.
+
+📌Nota: Si usan Visual Studio Code pueden ver que peso tiene el o los selectores que están usando. Solo coloca el puntero del mouse sobre los selectores y podrá verlo de la siguiente manera (ID, Class, Elemento HTML)
+
+---
+
+**Malas Prácticas dichas en Clase Hasta Ahora**
+
+-   Usar tanto id en CSS
+-   Usar el !importante
+-   Usar la etiqueta `<style>`dentro del archivo html
+-   Usar el atributo style dentro de las etiquetas html
+-   Usar div para contener todo ignorando los encabezados, navegación, sección, artículo, etc.
+-   No utilizar la etiqueta `<form>`para hacer formularios
+-   Usando las etiquetas `<select>`y `<option>`para hacer selectores o menús desplegables.
+-   No nombrar el primer archivo html del proyecto como index.html
+-   No tener archivos .css para cada pantalla de un proyecto.
+-   Tener todo el css junto en un solo archivo.
+-   No ponerle el atributo alt a una imagen
+-   Poner imágenes dentro de `<div>`una vez de`<figure>`
+-   Usando textos solo en mayúsculas en HTML, en vez de utilizar el atributo de CSS, text-transform, con el valor en mayúsculas. Ya que al hacer esto pareciera que estuvieras gritando.
+-   Poner videos que se reproduzcan solos.
+-   No optimizar las imágenes.
+-   No tener cuidado de cuál es el formato ideal para las imágenes y su respectivo peso.
+-   No tener cuidado con la respectiva semántica de HTML, y con la sintaxis adecuada para CSS.
+-   No cerrar las etiquetas que se cierran en sí mismas como`<br/>`
+-   No comentar partes esenciales de tu código.
+-   No pongas la etiqueta `<meta name=”robots” content=”index,follow”>`en tu proyecto para que los navegadores los puedan ubicar mejor.
+-   No usar la etiqueta `<meta name=”viewpor” content=”width=device-width, initial-scale=1.0”>`para hacer tu proyecto responsive.
+-   No poner el atributo autocomplete=”valor” en los campos de tu formulario para hacerle la vida más fácil al usuario
+-   No usar el atributo requerido en los campos obligatorios de tu formulario como una primera capa de seguridad
+
+[Los 30 selectores CSS que debes memorizar](https://code.tutsplus.com/es/tutorials/the-30-css-selectors-you-must-memorize--net-16048)
+
+[https://stuffandnonsense.co.uk/archives/css_specificity_wars.html](https://stuffandnonsense.co.uk/archives/css_specificity_wars.html)
+
+## 29. Combinadores: hermanos adyacentes (combinadores)
+
+El combinador hermano adyacente ( +) separa dos selectores y coincide con el segundo elemento solo si sigue inmediatamente al primer elemento, y ambos son hijos del mismo padre element.
+
+[https://flukeout.github.io/](https://flukeout.github.io/)
+
+Los combinadores (Combinators)  
+Nos permiten combinar múltiples selectores y crear una mayor especificidad.
+
+**Hermano adyacente o cercano**
+
+```css
+div + p {
+	...
+}
+```
+
+**Hermano general (hermano general)**
+
+```css
+div ~ p {
+	...	 /*Alt + 126 = ~*/
+}
+```
+
+**hijo (niño)**
+
+```css
+div > p {
+	...
+}
+```
+
+**descendiente (descendiente)**
+
+```css
+div p {
+	...
+}
+```
+
+Esto nos permite dejar a un lado a los ID que como ya vimos no pueden generar errores conforme avance el proyecto por el peso que tienen en CSS.
+
+---
+
+### Hermano Adyacente o Cercano
+
+Se representa por:`+`
+
+Ejemplo:
+
+```html
+<body>
+    <div>
+        <h2>Soy un h2</h2>
+        <p>Soy un p 1</p>
+        <h2>Soy un h2</h2>
+        <h3>Soy un h3</h3>
+        <p>Soy un p 2</p>
+        <h2>Soy un h2</h2>
+        <p>Soy un p 3</p>        
+    </div>
+</body>
+```
+ 
+```css
+h2 + p {
+  color: red;
+}
+```
+
+
+Aplica estilo a todas las etiquetas párrafo que están cerca y debajo de una etiqueta h2. Solo afecta a los p que estan cerca (Abajo del elemento) h2
+
+Combinadores en CSS 
+[https://medium.com/sngular-devs/combinadores-en-css-bf117a8c91f5](https://medium.com/sngular-devs/combinadores-en-css-bf117a8c91f5)
+
+## 30. Combinadores: General Hermano
+
 
 
