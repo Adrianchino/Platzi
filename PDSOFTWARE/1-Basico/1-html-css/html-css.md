@@ -1929,3 +1929,830 @@ Una vez tengamos el elemento padre con display: flex tenemos otras propiedades q
 
 Juego para aprender Flexbox: [https://flexboxfroggy.com/#es](https://flexboxfroggy.com/#es)  
 Ejemplos: [https://codepen.io/yair-lira/pen/LYZVJdd](https://codepen.io/yair-lira/pen/LYZVJdd)
+
+## 41. Variables 
+
+Es posible usar variables en CSS en donde podemos guardar un valor que podemos reutilizar en nuestros estilos, así evitamos escribir código repetido.
+
+Lo hacemos mediante:  
+`:root{}` → Que siempre hace referencia a nuestro html. Aquí es donde se declararán variables.
+
+Declaración de variables:
+
+```css
+:root {
+    --primary-color: #003476;
+    --secundary-color: #b4d2f7;
+    --header-size: 4rem;
+    --font: 1.8rem;
+}
+```
+
+Llamado de variables:
+
+```css
+header {
+    width: 100vw;
+    height: 15vh;
+    background-color: var(--primary-color);
+}
+```
+
+## 42. Web fonts
+
+Las _**Web Fonts**_ son grupos familiares de fuentes, los navegadores web poseen fuentes predeterminadas y dependiendo del mismo cada uno de ellos posee estilos diferentes.
+
+Generic-families: 
+
+GENERICAS | FUENTES | FUENTES
+| - | - | - |
+serif | Times New Roman | Georgia
+sans-serif | Helvetica | Verdana
+cursive | Dancing Script | Great Vibes
+monospace| Courier New | Roboto Mono
+
+
+Verificar fuentes en el navegador Google Chrome:
+
+-   Nueva pestaña
+-   Tres puntos
+-   Configuración
+-   Diseño/Aspecto
+-   Personalizar fuentes
+
+Paginas para buscar fuentes:
+
+-   Buscar fuente y escoger una: [https://fonts.google.com/](https://fonts.google.com/)
+-   Seleccionar formatos o estilos que quieres en la fuente + -
+-   @import: Copiar lo que sale. **No es buena practica.**
+-   link: Copiar. Pegar en el html, head debajo del link. **Es buena practica.**
+-   CSS rules to specify families: copiar y pegar en el archivo style.css dentro de:
+
+```css
+html { 
+  font-family: 'Roboto', sans-serif; 
+}
+```
+
+Los import de google fonts no son tan buenas prácticas porque pegan en el performance, a pesar del display=swap que agregó google para mitigar el daño aún así es mejor hacerlo en el head de html usando el link que nos proporciona.
+
+📌 Es una buena práctica cargar solo una fuente por proyecto.
+
+Iconos: [https://fonts.google.com/icons?selected=Material+Icons](https://fonts.google.com/icons?selected=Material+Icons)  
+Mas Iconos: [https://fontawesome.com/](https://fontawesome.com/)  
+Fuentes: [https://fonts.google.com/](https://fonts.google.com/)  
+Familias tipográficas: [https://developer.mozilla.org/en-US/docs/Web/CSS/font-family](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family)
+
+## Quiz:
+
+1.  Son los elementos que componen al modelo de caja:
+    
+    -   Margin, Border, Padding y Content
+2.  ¿De qué forma podemos incluir CSS a nuestro proyecto?
+    
+    -   Desde un archivo externo con la etiqueta `<style>`, como atributo en una etiqueta HTML.
+3.  ¿Para que sirven las variables en CSS?
+    
+    -   Para reutilizar estilos que pueden repetirse en nuestro archivo .css y así ahorrar tiempo.
+4.  ¿En qué nos ayuda 'display: flex'?
+    
+    -   En ordenar y distribuir los elementos de un contenedor horizontal o verticalmente.
+5.  ¿Qué tipo de display debo utilizar si quiero mantener mis elementos en forma horizontal?
+    
+    -   inline' o inline-block', ambos tienen resultados diferentes.
+6.  Son unidades de medida relativas:
+    
+    -   em, rem, %
+7.  El uso de "!important"...
+    
+    -   Debe evitarse porque es una mala práctica. Los estilos se pueden romper o pueden ser complejos de entender.
+8.  ¿Cuáles son las partes de una regla de CSS?
+    
+    -   Selector, declaración, propiedad y valor de propiedad.
+9.  Si HTML es como la estructura de una casa, CSS sería como...
+    
+    -   Su apariencia visual, estilo de la fachada, color de la pintura, etc.
+
+
+## 43. Responsive design: media queries
+
+Son todas esas técnicas que usamos para adaptar nuestras aplicaciones web a la mayor cantidad de pantallas.
+
+Conceptos claves:
+
+-   **Break points:** son la dimensión en el viewport (o el width de la pantalla) en el que se genera un cambio. Es el cambio donde se reposicionan o redimensionan ciertos elementos o contenedores para que se vea bien sin importar el dispositivo donde estés. Es el cambio, reposición y redimensionamiento de los contenedores que se genera cuando la pantalla es de cierto tamaño.
+-   **Media Queries:** son condicionales. No es la mejor práctica. Se aplican para cada tamaño de dispositivo. El pixelaje dado será el **break point**.
+
+Ejemplo de Media Queries:
+
+```css
+@media (min-width: 48rem;) {
+  "código que se aplicará"
+}
+```
+
+Cuando la pantalla sea más chica que 48rem, el código que esté dentro va a suceder pero si la pantalla es mas grande que 48rem voy a tener un siguiente media queries que ayudará a implementar estilos diferentes y así sucesivamente dependiendo la pantalla.
+
+Hay diferentes estrategias para responsive design, la recomendada es **Mobile First** o **Mobile Only** lo que quiere decir que los proyectos web ya tienen que estar diseñados solo para dispositivos Mobile. Siempre es mejor trabajar de pantallas chicas a grandes.
+
+La forma de hacerlo desde el CSS es teniendo el código base (código hecho y optimizado para mobiles), luego breakpoints para los demás dispositivos. La forma de implementar media queries es iniciar desde las pantallas mas chicas y se termina con las pantallas mas grandes. No es la mejor practica.
+
+```css
+@media (min-width: 480px;) {
+  "código que se aplicará"
+}
+@media (min-width: 768px;) {
+  "código que se aplicará"
+}
+@media (min-width: 1024px;) {
+  "código que se aplicará"
+}
+```
+
+Otra forma es aplicarlo desde el head en el html, es la mejor practica y lo que hacemos es, en lugar de mandar llamar un solo archivo de CSS, mandamos llamar varios archivos de CSS dependiendo para que dispositivo estén hechos. El primer archivo va a tener los estilos enfocados en dispositivos Mobile y así sucesivamente dependiendo el tamaño de la pantalla.
+
+```html
+<!-- Estilos enfocados a mobile -->
+<link href="style.css" rel="stylesheet"> 
+<!-- Estilo enfocado a tablets -->
+<link href="tablet.css" rel="stylesheet" media="screen and (min-width: 768px)"> 
+```
+
+Ver diversas medidas: [https://www.mydevice.io/](https://www.mydevice.io/)
+
+## 44. Estrategias de responsive: mostly fluid
+
+Estos son de los 3 patrones más usado en la industria.
+
+### Mostly Fluid
+
+Iniciamos con columnas y en el momento en el que empieza a crecer a una tablet empezamos a reacomodar las columnas (probablemente el header se quede igual), si cambiamos la orientación de la tablet (la ponemos horizontalmente) podemos reacomodar otra vez parte de los contenedores, y si nos vamos a una desktop o laptop ya tendríamos la vista total donde están todos los contenedores por importancia.
+
+![Responsive|600](https://i.postimg.cc/QNFtg0Rx/responsive.png)
+
+Ejemplo:
+
+```html
+<body>
+    <main class="container">
+        <div class="c1"></div>
+        <div class="c2"></div>
+        <div class="c3"></div>
+        <div class="c4"></div>
+        <div class="c5"></div>
+    </main>
+</body>
+```
+
+📌 Atajo con emmet, `main.container>div.c$*5`
+
+```css
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 62.5%;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.c1, .c2, .c3, .c4, .c5 {
+    width: 100%;
+    min-width: 150px;
+    height: 150px;
+}
+.c1 {
+    background-color: #003476;
+}
+.c2 {
+    background-color: #0062d2;
+}
+.c3 {
+    background-color: #b4d2f7;
+}
+.c4 {
+    background-color: #d5dfef;
+}
+.c5 {
+    background-color: #dfe1e5;
+}
+```
+
+Continuamos en la siguiente clase...
+
+Aprender Responsive Design: [https://developers.google.com/web/fundamentals/design-and-ux/responsive/patterns](https://developers.google.com/web/fundamentals/design-and-ux/responsive/patterns)
+
+## 45. Implementando mostly fluid
+
+Si vamos a trabajar los media query’s en un solo CSS por buenas prácticas van hasta el final del documento para empezar a marcar donde existen los breakpoints y cuales son los cambios por cada uno.
+
+Si empieza a crecer de más se hará muy flexible y nuestro contenido se va a estirar mucho, para evitar esto ponemos un limite que cuando alcance cierto tamaño se empiece a centrar.
+
+✨ Para estar seguros de que los estilos de media query se están descargando de la manera que los he colocado reviso el inspector de elementos -> Network (red) y veremos todos los archivos. Para ver cambios refrescar ventana.
+
+### Mostly Fluid en un solo archivo
+
+```css
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 62.5%;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.c1, .c2, .c3, .c4, .c5 {
+    width: 100%;
+    min-width: 150px;
+    height: 150px;
+}
+.c1 {
+    background-color: aqua;
+}
+.c2 {
+    background-color: black;
+}
+.c3 {
+    background-color: darkblue;
+}
+.c4 {
+    background-color: aqua;
+}
+.c5 {
+    background-color: black;
+}
+
+@media (min-width: 600px){ 
+    .c2, .c3, .c4 {
+        width: 50%;
+    }
+}
+@media (min-width: 800px){
+    .container {
+        width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .c1, .c2 {
+        width: 50%;
+    }
+    .c3, .c4 {
+        width: 33%;
+    }
+    .c5 {
+        width: 34%;
+    }
+}
+```
+
+### Mostly Fluid en archivos diferentes
+
+**index.html**
+
+```html
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostly Fluid</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./tablet.css" media="screen and (min-width:600px)">
+    <link rel="stylesheet" href="./desktop.css" media="screen and (min-width:800px)">
+</head>
+```
+
+**style.css**
+
+```css
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 62.5%;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.c1, .c2, .c3, .c4, .c5 {
+    width: 100%;
+    min-width: 150px;
+    height: 150px;
+}
+.c1 {
+    background-color: aqua;
+}
+.c2 {
+    background-color: black;
+}
+.c3 {
+    background-color: darkblue;
+}
+.c4 {
+    background-color: aqua;
+}
+.c5 {
+    background-color: black;
+}
+```
+
+**tablet.css**
+
+```css
+.c2, .c3, .c4 {
+    width: 50%;
+}
+```
+
+**desktop.css**
+
+```css
+.container {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.c1 {
+    width: 60%;
+}
+.c2 {
+    width: 40%;
+}
+.c3, .c4 {
+    width: 33%;
+}
+.c5 {
+    width: 34%;
+}
+```
+
+
+## 46. Layout shifter CSS
+
+Empiezas desde el diseño móvil pero según va creciendo, el layout puede cambiar de una manera drástica según el orden que le des.
+
+![Layout shifter](https://i.postimg.cc/nhkGqM2h/layout-shifter.png)
+
+Ejemplo:
+
+```html
+<body>
+    <main class="container">
+        <div class="c1"></div>
+        <div class="c4">
+            <div class="c2"></div>
+            <div class="c3"></div>
+        </div>
+        <div class="c5"></div>
+    </main>
+</body>
+```
+
+```css
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 62,5%;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.c1, .c2, .c3, .c4, .c5 {
+    width: 100%;
+    min-width: 150px;
+    height: 150px;
+}
+.c4 {
+    height: auto;
+}
+.c1 {
+    background-color: #003476;
+}
+.c2 {
+    background-color: #0062d2;
+}
+.c3 {
+    background-color: #b4d2f7;
+}
+.c4 {
+    background-color: #d5dfef;
+}
+.c5 {
+    background-color: #dfe1e5;
+}
+
+@media (min-width: 600px) {
+    .c1 {
+        width: 25%;
+        height: 300px;
+    }
+    .c4 {
+        width: 75%;
+    }
+    .c5 {
+        width: 100%;
+    }
+}
+@media (min-width: 800px) {
+    .container {
+        width: 800px;
+        margin: 0 auto;
+    }
+    .c1 {
+        width: 50%;
+        height: 150px;
+        order: 1;
+    }
+    .c4 {
+        width: 100%;
+    }
+    .c5 {
+        width: 50%;
+        order: 2;
+    }
+}
+```
+
+
+## 47. Column Drop
+
+Hace que todos los contenedores vayan subiendo a la primera fila según el orden que les des.
+
+![Column Drop](https://i.postimg.cc/HsBxqPw3/column-drop.png)
+
+```html
+<body>
+    <main class="container">
+        <div class="c1"></div>
+        <div class="c2"></div>
+        <div class="c3"></div>
+        <div class="c4"></div>
+        <div class="c5"></div>
+    </main>
+</body>
+```
+
+```css
+ * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 62.5%;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.c1, .c2, .c3, .c4, .c5 {
+    width: 100%;
+    min-width: 150px;
+    height: 150px;
+}
+.c1 {
+    background-color: #003476;
+}
+.c2 {
+    background-color: #0062d2;
+}
+.c3 {
+    background-color: #b4d2f7;
+}
+.c4 {
+    background-color: #d5dfef;
+}
+.c5 {
+    background-color: #dfe1e5;
+}
+@media (min-width: 600px) {
+    .c1 {
+        width: 25%;
+        order: 1;
+    }
+    .c2 {
+        width: 75%;
+        order: 2;
+    }
+    .c3 {
+        width: 100%;
+        order: 3;        
+    }
+    .c4 {
+        width: 100%;
+        order: 4;
+    }
+    .c5 {
+        width: 100%;
+        order: 5;
+    }
+}
+@media (min-width: 800px) {
+    .c1 {
+        width: 30%;
+        order: 1;
+    }
+    .c2 {
+        width: 40%;
+        order: 2;
+    }
+    .c3 {
+        width: 30%;
+        order: 3;        
+    }
+    .c4 {
+        width: 50%;
+        order: 4;
+    }
+    .c5 {
+        width: 50%;
+        order: 5;
+    }
+}
+```
+
+## 48. Buenas prácticas y ejemplos de responsive
+
+Separa siempre tus archivos de CSS por break point.
+
+-   mobile.css / style.css
+-   tablet.css
+-   desktop.css
+
+Para ver medidas de dispositivos [https://www.mydevice.io/](https://www.mydevice.io/)
+
+## 49. Imágenes responsive
+
+`<picture>` y `<source>`  
+Nos ayudan a trabajar imágenes responsive y de diferentes pesos para diferentes dispositivos.
+
+La etiqueta `<source/>` debe ir dentro de `<picture>`  
+Esto permite ir ordenando de mayor tamaño a menor con el argumento media y srcset, para al final mostrar la imagen con la etiqueta `<img>` que debe ser la imagen pensada para dispositivos móviles.
+
+La etiqueta `<source>` recibe como parámetros media y el srcset. media recibe las medidas en las cuales se van a mostrar diferente imágenes dependiendo del tamaño de la pantalla. Y srcset recibe la ruta de la imagen y el navegador decide cuál cargar dependiendo del peso. srcset se comunica con el navegador y le da opciones para escoger la mejor imagen para ese dispositivo. Recibe una imagen como parámetro.
+
+Ejemplo:
+
+```html
+<picture>
+	<source media="(min-width: 1300px)" srcset="./imgs/large.jpg">
+     <source media="(min-width: 1000px)" srcset="./imgs/medium.jpg">            
+     <img src="./imgs/small.jpg" alt="Descripción en caso no cargue la imagen">
+</picture>
+```
+
+```css
+img {
+    width: 100%;
+}
+```
+
+📌 Recuerda: `width: 100%;` Es tu mejor amigo, úsalo sin problemas.
+
+## Quiz:
+
+1.  ¿Cómo puedo saber que se están aplicando mis media queries desde archivos externos?
+    
+    -   Verificando que se llaman los archivos en el apartado “Networking” del inspector de elementos, y en qué orden.
+2.  ¿Qué significa que un proyecto sea "mobile-first"?
+    
+    -   Que su diseño está enfocado a dispositivos móviles y se parte de aquí para adaptarlo a vistas más grandes.
+3.  ¿Cuántos breakpoints debería haber en tu proyecto idealmente?
+    
+    -   Máximo 3.
+4.  ¿Cómo es mejor dividir nuestros media queries?
+    
+    -   Un archivo con los estilos generales y otro archivo por cada media querie que utilicemos.
+5.  Es la principal característica del patrón Layout Shifter:
+    
+    -   Se inicia en un diseño vertical y al crecer la pantalla se reposicionan los elementos para dar un layout diferente.
+6.  ¿Dónde se recomienda colocar los media queries en CSS en caso usar un solo archivo?
+    
+    -   Al final del archivo después de todos los estilos.
+
+## 50. Semántica
+
+Es utilizar las etiquetas de HTML y dejar de utilizar muchos div. Etiquetas que nos indican donde estamos. Esto es importante porque existen ciertos softwares (si tenemos alguna discapacidad) que nos ayudan a leer la pantalla y si tiene buena semántica le puede decir al usuario en que sección de la pagina están.
+
+Debes construir un Layout con las etiquetas para cada una de las secciones que vas a necesitar para el proyecto y usar los `<div>` cuando tengamos contenedores de algo muy específico.
+
+Curso: [https://platzi.com/clases/accesibilidad-web/](https://platzi.com/clases/accesibilidad-web/)  
+Curso: [https://platzi.com/clases/basico-javascript/](https://platzi.com/clases/basico-javascript/)
+
+Tabla periódica HTML: [https://allthetags.com/](https://allthetags.com/)
+
+
+## 51. Textos
+
+Aquí nos referimos a la medida de los textos. Todos los desarrolladores están acostumbrados a usar píxeles para sus fuentes lo que genera un problema de accesibilidad, porque si queremos aumentar el texto de un proyecto esto no va a poder pasar (porque es absoluta).
+
+Es importante que usemos **medidas relativas como rem** . De esta manera les damos a las personas con alguna discapacidad una oportunidad
+
+```html
+<body>
+    <main>
+        <h1>Soy un titulo</h1>
+        <section>
+            <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore eius     laboriosam modi beatae repellendus unde quo provident sapiente, odit, molestiae esse rerum consequuntur? Animi distinctio qui ipsum voluptates ullam maiores?
+            </p>
+        </section>
+    </main>
+</body>
+```
+
+```css
+html {
+    font-style: 62.5%;
+}
+
+h1 {
+    font-size: 3rem;
+}
+p {
+    font-size: 1.8rem;
+}
+```
+
+Los cambios en el tamaño de letra se ven al modificar la configuración del tamaño de letra del navegador.
+
+## 52. Etiquetas, alt y title
+
+Son algunos atributos que se le agregan a las etiquetas.
+
+-   **Etiqueta:** Como es el contenedor de todo el input al darle clic al label y automáticamente pone un foco en el input. Por ejemplo cuando un software de lectura, al momento que se pare en la etiqueta automáticamente se selecciona la entrada. SIMPRE USARLO PARA LOS INPUTS/FORMULARIOS.
+
+```html
+<form action="">
+	<label for="name">
+           <span>¿Cuál es tu nombre?</span>
+		<input id="name" type="text">
+	</label>
+     <label for="started-studying">
+		<span>¿Qué día comenzaste con platzi?</span>
+           <input id="started-studying" type="date">
+	</label>
+	<label for="time-to-study">
+		<span>¿En que horario estudias?</span>
+		<input id="time-to-study" type="time">
+	</label>
+</form>
+```
+
+-   **Alt:** Al igual que en el anterior, al llegar el software a la imagen lo que hará es que leerá la descripción que venga dentro del alt. Hay que ser descriptivos. Que también sirve cuando la imagen no carga como vimos en clases pasadas.
+    
+-   **Title:** Este se puede agregar a diferentes etiquetas como por ejemplo `<a>`o `<img>`esta es otra pequeña descripción que sale al momento de hacer un hover en la imagen o hipervínculo.
+    
+
+```html
+<section>
+	<img 
+		src="./dog.jpg" 
+           alt="Dog en Londres" 
+           title="Descripción cuando posas el puntero sobre la imagen"
+	/>
+</section>
+```
+
+
+## 53 Próximos pasos como desarrollador web
+
+🎉¡Lo ha logrado!🙌Completaste todas las clases del  **[Curso Definitivo de HTML y CSS](https://platzi.com/cursos/html-css/)**  y ahora puedes elegir si especializarte en  [desarrollo Full Stack](https://platzi.com/clases/2008-html-css/31091-que-es-fullstack/) ,  [Frontend o Backend](https://platzi.com/blog/que-es-frontend-y-backend/) .
+
+✅ Si aún no queda claro algún tema, revisa las clases o deja tus dudas en la sección de preguntas.
+
+🧾 **Realiza la prueba del curso**  para recibir tu certificado y no olvides dejar tus🌟y tu comentario.
+
+👨‍💻Conoce el reto de  [JavaScript Hero](https://jshero.platzi.com/) , donde podrás practicar los conceptos en un desafío diario, en el que podrás demostrar tus conocimientos sobre lo aprendido durante el curso y mucho más.
+
+## Otros Apuntes:
+
+-   [https://www.notion.so/Curso-definitivo-de-HTML-y-CSS-7196d473c6b046d2b8de4a0edaa82dc6](https://www.notion.so/Curso-definitivo-de-HTML-y-CSS-7196d473c6b046d2b8de4a0edaa82dc6)
+-   [https://losapuntesdemajo.vercel.app/](https://losapuntesdemajo.vercel.app/) Revisar👈👀
+
+## Herramientas utiles
+
+✨ [Autoprefixer CSS online](https://autoprefixer.github.io/)  
+Devuelve todos los prefijos de los requisitos necesarios para que los estilos de tu web se adapten bien a las características particulares de cada navegador.
+
+✨ [combinar colores:](https://coolors.co/ffffff-e36588-011638-2978a0-9bc53d)
+
+✨Para hacer apuntes con MarkDown
+
+-   [https://typora.io/](https://typora.io/)
+-   [https://www.youtube.com/results?search_query=typora+tutorial](https://www.youtube.com/results?search_query=typora+tutorial)
+
+✨Apuntes en VSC Apuntes en un repositorio de GitHub y para editarlos uso vscode con los plugins:
+
+-   Rebajas todo en uno
+-   rebajas
+-   Corrector ortográfico de código
+-   Español - Corrector ortográfico de código
+
+✨ [Eliminar fondo de imagen](https://www.remove.bg/)
+
+## Examen
+
+1.  ¿Cuál es el tamaño promedio de una imagen para su uso en la web?
+    
+    -   70kb
+2.  ¿Cuál es una de las principales diferencias de una página estática a una dinámica?
+    
+    -   Las páginas estáticas son sólo informativas.
+3.  ¿Cuál es la etiqueta de HTML que se utiliza como contenedor del contenido principal?
+    
+    -   main
+4.  ¿Qué formato de imagen utilizaremos para fotos?
+    
+    -   JPG
+5.  ¿Qué formato de imagen es ideal para utilizar con transparente?
+    
+    -   PNG-8
+6.  ¿A qué nos referimos cuando decimos que una imagen es categoría Lossy?
+    
+    -   Son imágenes que reducen la cantidad de colores y eliminan datos necesarios para recortar su tamaño.
+7.  ¿Cuál es la paleta de colores en una imagen PNG 8?
+    
+    -   Máximo 256 colores
+8.  ¿Cuál es la paleta de colores en una imagen JPG?
+    
+    -   Millones de colores
+9.  ¿Cuál es la principal diferencia de una pseudo clase?
+    
+    -   Definen el estilo de un estado especial de un elemento.
+
+10.  ¿Cuál es la principal diferencia de un pseudo elemento?
+    
+	-  Definen el estilo de una parte específica de un elemento.
+11.  ¿Cuál es el orden correcto de declaración en CSS?
+    
+    -   Importancia, especificidad y orden en las fuentes
+12.  ¿Cuál de estos selectores es más importante para CSS?
+    
+    -   !important
+13.  ¿Cuál de estas declaraciones tiene más peso en CSS?
+    
+    -   .clase .clase -> No es REPASAR CLASE
+14.  ¿Qué símbolo representa al combinador General Sibling (Hermano general)?
+    
+    -   ~
+15.  ¿Qué símbolo representa al combinador Adjacent Sibling (Hermano cercano)?
+    
+16.  ¿Qué significa REM?
+    
+    -   Root element font-size
+17.  ¿Cuáles de estas es una medida absoluta?
+    
+    -   px
+18.  ¿Cuál es la posición que viene por defecto en todos los elementos de HTML?
+    
+    -   Static
+19.  ¿Cuál es la diferencia entre display block e inline?
+    
+    -   Inline: muestra en la misma línea (respetando el flujo) todos los elementos y no acepta las propiedades width, height ni márgenes verticales. Block: muestra los elementos en líneas independientes y acepta las propiedades width, height y márgenes verticales.
+20.  ¿Al estar utilizando Display Flex, cómo puedo alinear de forma vertical a los elementos hijos?
+    
+    -   flex-wrap: wrap; -> No es REPASAR CLASE
+21.  ¿Por qué es importante utilizar siempre medidas relativas en fuentes?
+    
+    -   Para que usuarios con problemas de visibilidad puedan incrementar el tamaño de fuente en caso de que lo necesiten.
+22.  ¿Para qué utilizamos la regla de box-sizing: border-box; en nuestros estilos?
+    
+    -   Nos ayuda a decirle al navegador que tenga en cuenta el border y padding en los valores que especifique para el width y height de un elemento. Esto normalmente hace que sea mucho más fácil dimensionar elementos.
+23.  ¿Cuál es la diferencia entre rem y em?
+    
+    -   rem toma como medida base el tamaño de fuente que está en el elemento root que sería la etiqueta html, y em toma como medida base el tamaño de fuente de su padre directo.
+24.  Si estoy creando un formulario y quiero preguntar por una fecha y hora exacta, cuál sería la mejor forma de hacerlo?
+    
+    -   Input type=”datetime-local”
+25.  ¿Cuál es la forma de pedirle al navegador que nos ayude en llenar la información que el usuario utiliza de forma frecuente en formularios?
+    
+    -   Utilizando el atributo autocomplete y el valor que buscamos.
+26.  ¿Qué meta utilizamos para asegurar una buena experiencia en responsive?
+    
+    -   meta name="viewport" content="width=device-width, initial-scale=1"
+27.  ¿Para qué utilizamos el atributo alt en las etiquetas img?
+    
+    -   Nos ayuda para poder tener una descripción en la imagen en caso de que por algo no se pueda renderizar, y nos ayuda en temas de discapacidad, para que softwares que leen pantallas para personas con alguna discapacidad visual puedan escuchar la descripción de la imagen que están pasando.
+28.  ¿Cuál es la diferencia entre posición absoluta y relativa?
+    
+    -   Con position: relative; podemos posicionar un elemento respecto al flujo normal de la página. Con position: absolute; el elemento no estará dentro del flujo normal de la página y tomará como referencia la ventana del navegador o el elemento padre posicionado más cercano.
+29.  ¿Cuál es el tamaño de fuente que viene por defecto en el navegador?
+    
+    -   16px
+30.  ¿Cuál de estos no es un patrón de diseño responsive?
+    
+    -   Layout fluid
