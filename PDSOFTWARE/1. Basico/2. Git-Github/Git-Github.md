@@ -556,3 +556,204 @@ Algunos comandos que pueden ayudar cuando colaboran con **_proyectos muy grande
 -   `git log – index.html`: Busca los compromisos en un archivo en específico.
 -   `git log -S “Por contenido”`: Buscar los commits con el contenido dentro del archivo.
 -   `git log > log.txt`: Guarda registros en un archivo txt.
+
+![Actualizacion](https://camo.githubusercontent.com/5ea2d544e03cbc5478ccea01e36c17031a0f509f2c03dfc52108b3fab2a228aa/68747470733a2f2f692e706f7374696d672e63632f3930643150386d6d2f31342d666c756a6f2d7265706f2d72656d6f746f2e706e67)
+
+## 15. Introducción a las ramas o branch de Git
+
+Las ramas son la forma de hacer cambios en nuestro proyecto sin afectar el flujo de trabajo de la rama principal (master/main). Esto porque queremos trabajar una parte muy específica de la aplicación simplemente o experimentar.
+
+**HEAD: Cabecera**  
+La cabecera o HEAD representa la rama y el commit de esa rama donde estamos trabajando. Por defecto, esta cabecera aparecerá en el último compromiso de nuestra rama principal.
+
+**Crear ramas:** 🔥
+
+-   `git branch nameBranch`: Crea una nueva rama desde el lugar que estas ubicado (master/main). Se copia el último compromiso registrado en el repositorio. Todos los cambios que hagamos en esta rama no los va a ver la rama master/main hasta que la volvamos a fusionar con un `git merge`.
+
+**Cambia entre ramas:** 🔥
+
+-   `git checkout nameBranch`
+
+¿Qué pasa al cambiar de rama?✨  
+Al movernos de una rama a otra los archivos se muestran según el estado de cada rama independiente.
+
+🤘 `git checkout -b nameBranch`: Este comando es una fusion entre `git branch`y `git checkout`y crea una rama llamada `nameBranch`ya la vez hace un checkout de la rama `nameBranch`.
+
+Tambien podemos movernos en el tiempo a cualquier otro commit de cualquier otra rama con los comandos:
+
+-   `git reset id-commit`
+-   `git checkout rama-o-id-commit`
+
+📌Cada vez que estés en una rama no olvidar realizar add o commit -am a los cambios realizados en cada rama correspondiente.
+
+📌Al iniciar todo proyecto solo tenemos una rama llamada master o main, de donde parten las ramas que queramos hacer.
+
+🎲
+
+## 16. Fusión de ramas con Git merge
+
+El comando `git merge`nos permite crear un nuevo compromiso con la **_combinación de dos ramas_** (la rama donde nos encontramos cuando ejecutamos el comando y la rama que indicamos después del comando).
+
+**combinar dos sucursales**  
+🔥Crear un nuevo commit en la rama master combinando los cambios de la rama development:
+
+1.  `git checkout master`
+    -   Cambia de rama y se ubica en master
+2.  `git merge development`
+    -   Estando en master traemos el contenido de la rama development fusionando ambos contenidos.
+
+🔥Crear un nuevo commit en la rama development combinando los cambios de cualquier otra rama:
+
+1.  `git checkout development`
+2.  `git merge cualquier-otra-rama`
+
+📌Para hacer un `merge`debemos estar ubicados en la rama de destino, para que todos los cambios se vayan ahí. Al fusionar estamos haciendo un nuevo commit así que deja un comentario.
+
+-   Esc + Mayús + zz
+
+✨Asombroso, ¿verdad? Es como si Git tuviera super poderes para saber qué cambios queremos conservar de una rama y qué otros de la otra. El problema es que no siempre se puede adivinar, sobre todo en algunos casos donde dos ramas tienen actualizaciones diferentes en ciertas líneas en los archivos. Esto lo conocemos como un conflicto y aprenderemos a solucionarlos en la siguiente clase.
+
+**Otros comandos**
+
+-   `git branch`: Con esto sabes que ramas hay. La rama que se muestra de color con un * indica que es la rama en la que estamos ubicados.
+-   `git branch -v`: Muestra la última confirmación de cambios en cada rama.
+-   `git branch --merged`: Muestra las ramas que han sido fusionadas con la rama activa.
+-   `git branch --no-merged`: Muestra todas las ramas que contienen trabajos sin fusionar.
+-   `git log --oneline --graph --all`: Permite visualizar la estructura gráfica de las ramas.
+-   `git branch -D "nameBranch"`: Permite eliminar ramas.
+
+📌Recuerda que ejecutar al comando `git checkout`para cambiar de rama o commit **_puedes perder el trabajo que no hayas guardado_** . Guarda tus cambios antes de hacer git checkout.❗❗❗
+
+Página para practicar:  
+[Learn Git Branching](https://learngitbranching.js.org/?locale=es_AR)
+
+![Ramas](https://camo.githubusercontent.com/4344c32f88699465885e9649614aece0bd13dd4e7bd4c8a6629ac6a75f71d1b0/68747470733a2f2f692e706f7374696d672e63632f66544c79354e34322f31362d667573696f6e2d6272616e63682e706e67)
+
+🎲
+
+## 17. Resolución de conflictos al hacer una fusión
+
+Git nunca borra nada a menos que nosotros se lo indiquemos. Cuando usamos los comandos `git merge`o `git checkout`estamos cambiando de rama o creando un nuevo commit, no borrando ramas ni commits (recuerda que puedes borrar commits con `git reset`y ramas con `git branch -d`).
+
+Git es muy inteligente y puede resolver algunos conflictos automáticamente: cambios, nuevas líneas, entre otros. Pero algunas veces no sabe cómo resolver estas diferencias, por ejemplo, cuando dos ramas diferentes hacen cambios distintos a una misma línea.
+
+Esto lo conocemos como conflicto y lo podemos **_resolver manualmente_** , solo debemos hacer el merge, ir a nuestro editor de código y elegir si queremos quedarnos con alguna de estas dos versiones o algo diferente. Algunos editores de código como Visual Studio Code nos ayudan a resolver estos conflictos sin necesidad de borrar o escribir líneas de texto, basta con presionar un botón y guardar el archivo.
+
+**Resolver conflicto manualmente**
+
+1.  `git checkout master`
+2.  `git merge development`
+    -   ¡¡¡CONFLICTOS!!!
+    -   Ahora VSC nos pide el cambio a aplicar.
+3.  `HEAD (Current change)`/`Development Incomming Change`
+    1.  Podemos conservar el cambio existente/actual o elegir el cambio entrante. Tenemos varias opciones para elegir.
+    2.  Control + s: Guardar cambios
+4.  `git commit -am "mensaje"`
+
+📌Recuerda que siempre debemos hacer un nuevo `commit -am ""`para aplicar los cambios del merge. Si Git puede resolver el conflicto, se comprometerá automáticamente. Pero, en caso de no poder resolverlo, debemos solucionarlo y hacer el commit.
+
+**Otros comandos útiles**
+
+-   `git log --graph --decorate --oneline`
+-   `git mergetool`: Arranca una herramienta visual en consola que permite resolver conflictos.
+-   `git merge --abort`: Comando para abortar la fusion en progreso, en caso no se pueda resolver los conflictos en ese momento.
+-   `git reset --merge HEAD`: Si hemos realizado un merge con una rama con la que queríamos.
+
+Los archivos con **conflictos por el comando** `git merge` entra en un nuevo estado que conocemos como **_Unmerged_** . Funcionan muy parecido a los archivos en estado Unstaged, algo así como **un estado intermedio** entre **_Untracked_** y **_Unstaged_** , solo debemos ejecutar `git add`para pasarlos al área de staging y `git commit`para aplicar los cambios en el repositorio.
+
+🎲
+
+## 18. Cambios en GitHub: de master a main
+
+El escritor argentino Julio Cortázar afirma que las palabras tienen color y peso. Por otro lado, los sinónimos existen por definición, pero no se expresan lo mismo. Feo no es lo mismo que desagradable, ni aromático es lo mismo que oloroso.
+
+Por lo anterior podemos afirmar que los sinónimos no expresan lo mismo, no tienen el mismo “color” ni el mismo “peso”.
+
+Sí, esta lectura es parte del curso profesional de Git & GitHub. Quédate conmigo.
+
+Desde el 1 de octubre de 2020 GitHub cambió el nombre de la rama principal: ya no es `“master”`-como aprenderás en el curso- sino `main`.
+
+✨Este derivado de una profunda reflexión ocasionada por el movimiento #BlackLivesMatter.
+
+La industria de la tecnología lleva muchos años usando términos como maestro, esclavo, lista negra o lista blanca y esperamos pronto pueden ir desapareciendo.
+
+Y sí, las palabras importantes.
+
+Por lo que de aquí en adelante cada vez que escuches a Freddy mencionar “master” debes saber que hace referencia a “main”
+
+Puedes leer un poco más aquí:  
+[Cambios en GitHub: de master a main](https://platzi.com/blog/cambios-en-github-master-main/)
+
+**Alternativas**  
+Crear un nuevo repositorio en la línea de comandos
+
+![Crear Repositorio](https://camo.githubusercontent.com/866fddcc918b14d89d3aba007864b57c2d6616cb3f1efa73c75744eb483729d2/68747470733a2f2f692e706f7374696d672e63632f6b354b4c317039482f31382d6d61737465722d6d61696e2e6a7067)
+
+o empujar un repositorio existente desde la línea de comando
+![Repositorio existente](https://camo.githubusercontent.com/08ea11710dbe48a8bd331f42fef3ad79c804d7565443b82fe54ef5ddfadb162a/68747470733a2f2f692e706f7374696d672e63632f4774376654304a342f31382d707573682d6d61696e2e6a7067)
+
+## 19. Uso de GitHub
+
+`GitHub`es una plataforma que nos permite guardar repositorios de Git que podemos usar como servidores remotos y ejecutar algunos comandos de forma visual e interactiva (sin necesidad de la consola de comandos).
+
+Luego de [crear nuestra cuenta](https://github.com/) , podemos:
+
+-   Crear o importar repositorios
+-   Crear organizaciones y proyectos de trabajo
+-   Descubrir repositorios de otras personas
+-   Contribuir a esos proyectos
+-   dar estrellas
+-   Muchas otras cosas.
+
+El `README.md`es el archivo que veremos por defecto al entrar a un repositorio. Es una muy buena práctica configurarlo para describir el proyecto, los requisitos y las instrucciones que debemos seguir para contribuir correctamente.
+
+🔥 **Clonar un repositorio desde GitHub**  
+Para clonar un repositorio desde GitHub (o cualquier otro servidor remoto) debemos copiar la URL (por ahora, usando HTTPS) y ejecutar el comando `git clone "url-https"`. Esto descargara la versión de nuestro proyecto que se encuentra en GitHub.
+
+Sin embargo, esto solo funciona para las personas que quieren empezar a contribuir en el proyecto.
+
+🔥 **Conectar repositorios**  
+Si queremos conectar el repositorio de GitHub con nuestro repositorio local, el que creamos con `git init`, debemos ejecutar las siguientes instrucciones:
+
+**GitHub** 
+
+1.  Crear un nuevo repositorio
+    -   Nombre del repositorio: Hiperblog
+    -   Descripción: Un blog increíble
+    -   Público
+    -   Inicializa este repositorio con un README
+    -   CREAR REPOSITORIO
+2.  Obtener URL del repositorio
+    -   Código
+    -   Clonar con HTTPS
+    -   Copiar URL
+
+**Git**
+
+1.  Guardar URL del repositorio de GitHub con el nombre de`origin`
+    -   `git remote add origin url`
+2.  Verificar que la URL se haya guardado correctamente
+    -   `git remote`
+    -   `git remote -v`
+        -   `v`: verbal
+3.  Traer la versión del repositorio remoto y hacer merge para crear un commit con los archivos de ambas partes. Podemos usar `git fetch`y `git merge`o solo:
+    -   `git pull origin master --allow-unrelated-histories`
+        -   Control + Mayús + zz
+        -   Alt + Mayús + zz
+        -   Esc + Mayús + zz
+4.  Por último, hacer `git push`para enviar y guardar los cambios de nuestro repositorio local en GitHub:
+    -   `git push origin master`
+
+**GitHub** 
+
+Recargamos la web y podemos ver que todo se agregó
+
+-   Podemos editar y hacer commits en la rama master/main
+-   Podemos ver el historial de compromisos, etc.
+
+📌Si hacemos cambios en GitHub, debemos actualizar nuestro repositorio local con`git pull origin master`
+
+🎲
+
+## 20. Cómo funcionan las llaves públicas y privadas
+
