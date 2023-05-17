@@ -427,4 +427,4 @@ Recuerda que la **url** siempre va entre comillas.
 ```
 
 Así quedaría nuestro resultado final:
-![Header-Termonado](https://i.postimg.cc/Znk4VHr1/Header-terminado.png)
+![Header-Termonado](https://i.postimg.cc/CxW4mfRW/Header-terminado.jpg)
