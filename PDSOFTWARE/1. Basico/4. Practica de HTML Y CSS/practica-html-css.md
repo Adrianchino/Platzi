@@ -447,4 +447,323 @@ main .main-input input {
 
 ```
 
-## 13. 
+## 13. Íconos y manejo de background hover
+
+### Cómo añadir el efecto hover
+
+1.  Llamamos la etiqueta contenedora del **_input_** con el pseudo-elemento **_hover_**. Es decir, los diseños con hover que apliquemos solo se mostrarán cuando coloquemos el cursor encima del elemento.
+2.  Con **_box-shadow: 0 1px 6px 0 #20212447_** agregamos una sombra paralela con un color en tono oscuro.
+3.  Con **_border-color: #dfele500_** añadimos un borde más oscuro, es decir, resalta más como el input original.
+
+### Cómo agregar íconos
+
+Vamos a agregar dos íconos: el de lupa y el de micrófono.
+
+### Pasos para agregar el ícono de lupa
+
+1.  Primero, llamamos la clase **_.search-icon_** desde nuestra clase **_.main input_**.
+2.  Añadimos un **_background-image_** e insertamos la **_url_** del ícono entre comillas. Te dejo el enlace: “[https://cdn0.iconfinder.com/data/icons/google-material-design-3-0/48/ic_search_48px-512.png](https://cdn0.iconfinder.com/data/icons/google-material-design-3-0/48/ic_search_48px-512.png)”.
+3.  **_background-repeat: no-repeat_** para evitar que el navegador repita la imagen por rellenar espacio.
+4.  **_background-position: center_** para centrarlo.
+5.  **_background-size: contain_** para que tome el tamaño del contenedor padre.
+6.  Añadimos un **_width: 18px_** y un **_height: 18px_** para redimensionar el ícono.
+
+### Pasos para agregar el ícono de micrófono
+
+1.  Llamamos la clase **_.micro-icon_** desde n***uestra clase .main input***.
+2.  Copiamos el código de arriba y cambiamos la url del ícono de micrófono. Te dejo el enlace: “[https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Google_mic.svg/726px-Google_mic.svg.png](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Google_mic.svg/726px-Google_mic.svg.png)”.
+3.  -   Añadimos **_cursor: pointer_** para que el cursor adopte la forma de la manita al colocarlo sobre el ícono.
+
+Deberíamos tener renderizado en nuestro navegador algo como esto:
+
+```css
+main .main-input-container:hover {
+    box-shadow: 0 1px 6px 0 #20212447;
+    border-color: #dfe1e500;
+}
+
+main .main-input .search-icon {
+    background-image: url('https://img.icons8.com/android/24/000000/search.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+}
+
+main .main-input .micro-icon {
+    background-image: url('https://www.gstatic.com/images/branding/googlemic/2x/googlemic_color_24dp.png');
+	background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+```
+
+## 14. Estilos en los botones
+
+### Cómo aplicar los estilos de los botones
+
+1.  Llamamos la clase que contiene los botones dentro de la etiqueta **_main_**.
+2.  Ajustamos el **_width: 530px_**.
+3.  Ajustamos el **_margin: 0 auto_** para que se posicione siempre en el centro.
+
+### Definir la posición de los botones
+
+1.  Llamamos la clase que contiene los botones que contenga una etiqueta **_div_** con **_main .main-buttons div_**.
+2.  Ajustamos el **_display_** en **_inline-block_**. Esto es porque por defecto el navegador le asigna a las cajas **_display: block_**, lo que hace que esté una encima de otra. Al usar **_inline-block_** las ponemos una a lado de otra. Por esto le asignamos la misma propiedad a las dos cajas.
+
+### Pasos para darle diseño de caja a los botones
+
+1.  Llamamos la clase que contiene los botones que contenga la etiqueta **_button_** con **_main .main-buttons button_**.
+2.  Le damos una altura con **_height: 36px_**.
+3.  Ajustamos el color de fondo con **_background-color: #f2f2f2_**.
+4.  Cambiamos el borde para que no se desplaze al colocar el cursor encima con **_border: 1px solid #f2f2f2_**.
+5.  Cambiamos el tamaño de fuente con **_font-size: 14px_**.
+6.  Cambiamos el color de la fuente con **_color: #5f6368_**.
+7.  Redondeamos los bordes con **_border-radius: 5px_**.
+8.  Añadimos espacio interno a los lados con **_padding: 0 15px_**.
+9.  Añadimos una separación entre los botones con **_margin-right: 15px_**.
+
+### Cómo poner el efecto _hover_ en los botones
+
+Ahora necesitamos que al pasar el cursor sobre los botones, cambie el color del texto y se cree una sombra alrededor de la caja. Para ello:
+
+1.  Llamamos la clase que contiene los botones con el pseudo-elemento **_hover_**. Así: **_main .main-buttons button:hover_**.
+2.  Generamos un borde sólido con **_border: 1px solid #c6c6c6_**.
+3.  Generamos una sombra con **_box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1_)**.
+4.  Cambiamos el color del texto con **_color: #222_**.
+5.  Añadimos un color de fondo con **_background-color: #f8f8f8_**.
+6.  Agregamos **_cursor: pointer_** para que el ícono del cursor cambie a una manita al posicionarlo sobre los botones.
+
+En nuestro navegador deberíamos tener un resultado como este:
+
+```css
+main .main-buttons {
+    width: 530px;
+    margin: 0 auto;
+}
+
+main .main-buttons div {
+    display: inline-block;
+}
+
+main .main-buttons button {
+    height: 36px;
+    background-color: #f2f2f2;
+    border: 1px solid #f2f2f2;
+    font-size: 1.5rem;
+    color: #5f6368;
+    border-radius: 5px;
+    padding: 0 25px;
+    margin: 0 10px;
+} 
+
+main .main-buttons button:hover {
+    border: 1px solid #c6c6c6;
+    box-shadow: 0px 1px 1px rgba(0,0,0,0.1);
+    color: #222;
+    background-color: #f8f8f8;
+    cursor: pointer;
+}
+```
+
+## 15. Maquetado del Footer
+
+### Pasos para poner la estructura del footer
+
+1.  Primero abrimos nuestra etiqueta **_footer_**. Necesitamos seccionarla en dos partes: contenedores izquierdos y derechos.
+2.  Creamos dos listas no ordenadas (**_ul_**) con cuatro y tres elementos (**_li_**) respectivamente.
+3.  Creamos una etiqueta ancla (**_a_**) a cada elemento (**_li_**) de nuestra lista.
+4.  Asignamos la clase **_footer-left_** a la primera lista y **_footer-right_** a la segunda.
+5.  Ahora solo agregamos el texto dentro de cada una de los elementos (**_li_**) de las listas.
+
+📌**Tip**: puedes usar _emmet_ para abreviar la creación de las listas. De esta manera:
+```html
+ul*2>li*4>a
+```
+
+Deberíamos tener una imagen así en nuestro navegador:
+
+```html
+	<footer>
+        <ul class="footer-right">
+            <li><a href="">Publicidad</a></li>
+            <li><a href="">Negocios</a></li>
+            <li><a href="">Acerca de</a></li>
+            <li><a href="">Como funcuina la busqueda</a></li>
+        </ul>
+
+        <ul class="footer-right">
+            <li><a href="">Privacidad</a></li>
+            <li><a href="">Condiciones</a></li>
+            <li><a href="">Preferencias</a></li>
+        </ul>
+    </footer>
+```
+
+## 16. Estilos en Footer
+
+### Etiqueta footer
+
+1.  Llamamos la etiqueta _footer_.
+2.  Le asignamos el **_width_: 100%** para que ocupe todo el ancho de la página y un **_height_: 50px**.
+3.  Para asegurarnos que el _footer_ siempre esté al final de la página y no se mueva, le damos **_position: absolute_**.
+4.  Además, quitamos el espacio de abajo con **_bottom:_ 0**.
+5.  Usamos **_display: grid_** para generar la cuadrícula en que estará el contenido de nuestro proyecto. La propiedad grid-template-colums: 1fr 1fr nos permite dividir el _footer_ en dos fracciones.
+6.  Alineamos los elementos con _**align-items: center.**_
+7.  Cambiamos el tamaño de fuente con _**font-size: 13px.**_
+8.  Le damos un color de fondo con _**background-color: #f2f2f2.**_
+9.  Añadimos un borde superior con _**border-top: 1px solid #e4e4e4**_.
+
+### Etiqueta ul
+
+1.  Llamamos la etiqueta ul desde el _footer_.
+2.  Le damos un **margin: 10px** para que el contenido no esté tan pegado al contenedor padre.
+3.  Le quitamos los _bullets_ con _**list-style: none**_.
+4.  Posicionamos el contenido en horizontal con _**display: flex**_.
+5.  Quitamos el espaciado interno izquierdo con _**padding-left: 0**_.
+
+### Contenedor izquierdo
+
+1.  Llamamos la clase _footer-left_ desde nuestra etiqueta _footer_ con _footer .footer-left._
+2.  Movemos los elementos a la izquierda con _**justify-self: left.**_
+
+### Contenedor derecho
+
+1.  Llamamos la clase _footer-left_ desde nuestra etiqueta _footer_ con _footer .footer-right._
+2.  Movemos los elementos a la derecha con _**justify-self: right.**_
+
+### Agregar estilos a los elementos
+
+1.  Llamamos a las etiquetas ancla dentro de los elementos li de las listas no ordenadas de nuestra etiqueta _footer_ con _footer ul li a_.
+2.  Agregamos un **_margin: 10px_** para separar los elementos entre sí.
+3.  Cambiamos su color con _**color: #5f6368**_.
+
+Nuestro proyecto final se debería ver así:
+
+```css
+/* Trabajar con el Footer */
+
+footer {
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 0px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    font-size: 1.3rem;
+    background-color: #f2f2f2;
+    border-top: 1px solid #e4e4e4;
+}
+  
+footer ul {
+    margin: 10px;
+    list-style: none;
+    display: flex;
+    padding-left: 0;
+}
+
+  
+footer .footer-left {
+    justify-self: left;
+} 
+
+footer  .footer-right {
+    justify-self: right;
+}
+
+footer ul li a {
+    margin: 10px;
+    color: #5f6368;
+}
+```
+
+## 17.  Cierre: diferencias entre CSS Grid y Flexbox
+
+### Diferencias entre Grid y flexbox
+
+Lo cierto es que ambos son complementos. Veamos esta imagen para tenerlo más claro:  
+
+Los espacios en las etiquetas no son visibles, pero posicionan el contenido en un lugar determinado. Solo podemos ver qué tanto ocupan cuando abrimos las DevTools de nuestro navegador. Entonces, ¿qué hace cada una?
+
+-   **Grid**: genera una cuadrícula que nos ayuda a dividir las cajas que son etiquetas contenedoras.
+-   **Flex**: nos ayuda a posicionar el contenido de las etiquetas contenedoras.
+
+👉 Es un ejercicio 100% personal y autónomo. **Ingresa [aquí](https://platziform.typeform.com/to/uy7tRTV5) para hacerla, te tomará 3 minutos**.
+
+## Examen
+
+Resumen
+
+1.
+
+¿Cómo se le llama al patrón de elementos HTML, clases y IDs usado en CSS para agregar estilos?
+
+`Selector'
+
+2.
+
+¿Cómo se le llama al conjunto de elementos que agregan estilos a etiquetas de HTML?
+
+`Reglas` 
+
+REPASAR CLASE
+
+3.
+
+¿Cuál es la declaración correcta para colocar una imagen de fondo en CSS?
+
+`background-image: url(" ");`
+
+4.
+
+¿Para que nos ayuda la propiedad de "display" en CSS?
+
+``Es la forma en que las etiquetas/elementos HTML se comportan, ya sea como elementos de bloque o elementos en linea.``
+
+5.
+
+¿Qué elemento utilizarías en tu archivo de CSS para poder seleccionar y resetear todos los estilos que genera el navegador por defecto?
+
+``*``
+
+6.
+
+¿De qué forma podría posicionar con CSS el contenido que esté dentro de algún elemento de HTML hacia algún extremo?
+
+`Justify-conten: Flex-end`
+
+REPASAR CLASE
+
+7.
+
+¿Para qué nos ayudan las clases y IDs en CSS?
+
+``Para seleccionar uno o varios elementos HTML y agregarles estilos de forma especifica.``
+
+8.
+
+¿Cuál es la diferencia entre una clase y un ID de CSS?
+
+``Las clases nos ayudan a crear estilos para grupos de elementos de HTML, son genéricas. En cambio, los IDs nos ayudan para aplicar estilos de manera única a algún elemento especifico..``
+
+
+REPASAR CLASE
+
+9.
+
+¿Cuál es la propiedad para agregar una sombra de fondo en CSS?
+
+``box-shadow``
+
+10.
+
+¿Cuál de las siguientes opciones sería una pseudoclase en CSS?
+
+``:hover``
+
