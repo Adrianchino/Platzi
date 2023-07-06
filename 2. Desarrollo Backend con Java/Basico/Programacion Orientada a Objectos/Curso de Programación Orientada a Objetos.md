@@ -274,5 +274,70 @@ Toda pieza de información nunca debería ser duplicada debido a que incrementa 
 
 La **herencia** nos permite crear nuevas clases a partir de otras, se basa en modelos y conceptos de la vida real. También tenemos una jerarquía de **padre e hijo**.
 
-## 16. 
+## 16. Aplicando Herencia a nuestro proyecto Uber
+
+#### Archivos de la clase
+
+
+[aplicando-herencia-a-nuestro-proyecto-uber1.png](https://static.platzi.com/media/public/uploads/aplicando-herencia-a-nuestro-proyecto-uber1_bf088c4f-9198-4a8b-b91a-abe62debf181.png)[
+
+[aplicando-herencia-a-nuestro-proyecto-uber2.png](https://static.platzi.com/media/public/uploads/aplicando-herencia-a-nuestro-proyecto-uber2_5ba149e0-9792-4e82-9430-84a44b7c1060.png)
+
+[aplicando-herencia-a-nuestro-proyecto-uber3.png](https://static.platzi.com/media/public/uploads/aplicando-herencia-a-nuestro-proyecto-uber3_5e853a21-7760-4fc9-9842-3c74d390c0ba.png)[
+
+[diagrama.jpg](https://static.platzi.com/media/public/uploads/diagrama_10b7b328-fbde-4cc2-b758-0b31ec6f0260.jpg)
+
+## 17. Reto 2: analicemos un problema
+
+Imagina que nuestro sistema de adopciones creció y ahora ofrece adoptar pericos, loros, gatos y hamsters.
+
+Genera un nuevo análisis, aplica herencia para abstraer mejor el problema y lograr modularidad en el _software_.
+
+Comparte tus resultados en la sección de discusiones.
+
+## 18. Creando nuestras carpetas iniciales para el curso
+
+¡Hola! Ahora sí vamos a empezar a definir nuestras clases en 4 diferentes lenguajes de programación, pero antes de ello vamos primero a crear la estructura de nuestras carpetas.
+
+La estructura de carpetas que estaremos manejando durante el curso será la siguiente:
+
+```
+CursoPOOUber
+├── Java
+├── JS
+├── PHP
+└── Python
+```
+
+Básicamente nuestra carpeta raíz será la carpeta `CursoPOOUber` y dentro crearemos las carpetas `Java`, `JS`, `PHP` y `Python` en las cuales iremos guardando nuestros archivos a medida que avanzamos en el curso.
+
+### Configurando el workspace para Python
+
+En una clase anterior instalamos Python, sin embargo, como estaremos guardando todo el código de este lenguaje dentro de la carpeta `Python` debemos informarle a Visual Studio Code que el código va a estar ahí, de esta forma podemos evitar problemas a futuro cuando usemos módulos.
+
+Para hacer esto es muy sencillo, dentro de nuestra carpeta `CursoPOOUber` vamos a crear una nueva carpeta llamada `.vscode` (ojo, el punto al inicio del nombre es importante). Dentro de esta carpeta vamos a crear un nuevo archivo llamado `settings.json` y dentro de este archivo vamos a poner la siguiente información:
+
+```
+{
+    "python.autoComplete.extraPaths": ["./Python"],
+}
+```
+
+De esta forma le estamos diciendo a nuestro editor de código que todos nuestros archivos de Python van a estar dentro de la carpeta `Python`, por tanto, él sabrá que cualquier módulo deberá leerlo desde esa carpeta, y no desde la carpeta raíz, lo cual evitará que te marque errores en el futuro 😄.
+
+**Es importante** que cuando abras tu proyecto en Visual Studio Code, lo abras desde la carpeta `CursoPOOUber`, de esta forma, el editor de código te mostrará en el árbol de carpetas a tus 5 carpetas que has creado:
+
+![folder_structure.png](https://static.platzi.com/media/user_upload/folder_structure-214fcc01-2f6a-4a61-82d1-f8688e142380.jpg)
+
+¡Estamos listos para empezar a codear! Nos vemos en las siguiente clase donde empezaremos a definir clases con Java y Python.
+
+## 19. Definiendo clases en Java y Python
+
+Código para las clases de java y Python 
+
+[DESCARGAR TODO](https://github.com/anncode1/Curso-POO-Platzi/archive/master.zip)
+
+## 20. 
+
+
 

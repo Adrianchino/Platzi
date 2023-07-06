@@ -1015,4 +1015,845 @@ Ten en cuenta estos 3 elementos:
 }
 ```
 
-## 20. 
+## 20. Maquetando tarjetas de beneficios
+
+### Crear estilos en el contenedor
+
+- Llamamos la clase del contenedor de la primera tarjeta con **_.product-detail–card_**.
+- Ajustamos su ancho al **_90%_** y alto en **_150px_**.
+- Le damos un ancho mínimo de **_288px_** y un máximo de **_400px_**. Esto es para que evite crecer más y se distorsione en pantallas muy grandes.
+- Añadimos un margen superior e inferior de **_15px_** y lo hacemos auto a los lados para que se centre.
+- Añadimos un padding de **_15px_**.
+- Un color de fondo **_–black_** para que contraste con el color del contenedor principal.
+- Redondeamos sus esquinas con **_border-radius: 5px_**.
+- Creamos una sombra para la caja con ***box-shadow: 0 4px 8px rgba(0, 0, 0, 0.16)***.
+
+```css
+.product-detail--card {
+    width: 90%;
+    min-width: 288px;
+    max-width: 400px;
+    height: 150px;
+    margin: 15px auto;
+    padding: 15px;
+    background-color: var(--black);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.16);
+}
+```
+
+### Aplicando estilos al ícono
+
+- Llamamos la clase de nuestra etiqueta **_span_** desde la clase de su contenedor.
+- Colocamos **_display: inline-block_** para que el ícono ocupe una línea de espacio.
+- Le damos un alto y ancho de **_20px_**.
+- Añadimos un **_margin-bottom: 10px_**.
+- Agregamos el ícono con ***background-image: url(""***).
+- Ajustamos que ocupe toda la caja con **_cover_**, lo centramos y nos aseguramos que no se llegue a repetir la imagen.
+
+```
+.product-detail--card .clock {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-bottom: 10px;
+    background-image: url("./assets/icons/clock.svg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+```
+
+### Aplicar estilos al texto
+
+Ten en cuenta los siguientes dos elementos:
+
+#### Título
+
+- Llamamos la etiqueta que contiene nuestro título por el nombre de su clase con **_.product–card-title_**.
+- Le damos un **_margin-bottom: 15px_**.
+- Ajustamos el tamaño de fuente en **_1.8rem_** y le damos un ancho **_bold_**.
+- Ajustamos el interlineado en **_1.8rem_** y le damos color con la variable **_–just-white_**.
+
+```css
+.product--card-title {
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    line-height: 1.8rem;
+    color: var(--just-white);
+}
+```
+
+#### Cuerpo
+
+- Llamamos la etiqueta que contiene nuestro texto cuerpo por el nombre de su clase con **_.product–card-body_**.
+- Ajustamos el tamaño de fuente en **_1.4rem_** y le damos un ancho de **_500_**.
+- Ajustamos el interlineado en **_1.8rem_** y le damos color de **_#808080_**.
+
+```css
+.product--card-body {
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1.8rem;
+    color: #808080;
+}
+```
+
+## 21. Maquetando sección comodín
+
+El análisis de esta sección es muy sencillo. Encontramos sólo un par de elementos que debemos crear: un título y una imagen de fondo.
+
+### Maquetación
+
+Lo primero es abrir la siguiente sección que tenemos en nuestro **_index.html_** y agregarle una clase para poder identificarla.  
+Creamos un **_h2_** para aplicar el título.
+
+```html
+        <section class="bitcoin-img-container">
+            <h2>Conócelo hoy</h2>
+        </section>
+```
+
+### Estilos contenedor
+
+- Llamamos la sección por su clase con **_.bitcoin-img-container_**.
+- Ajustamos el ancho al 100% de la pantalla y lo limitamos a **_320px_**.
+- Le damos una altura del 50% de la altura de la pantalla en que se visualice con **_height: 50vh_**.
+- Llamamos la imagen de fondo con ***background-image: url("")***.
+- Centramos la imagen con respecto al contenedor con **_center_**.
+- Es importante colocar **_background-repeat: no-repeat_** para que la imagen no se duplique al pasar a dimensiones más grandes como la de una laptop.
+
+```css
+.bitcoin-img-container {
+    width: 100%;
+    min-width: 320px;
+    height: 50vh;
+    background-image: url("./assets/img/bitcoinbaby2x.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+```
+
+### Estilos texto
+
+- Llamamos la etiqueta **_h2_** desde su contenedor con **_.bitcoin-img-container h2_**.
+- Agregamos un padding superior de **_60px_**.
+- Ajustamos el tamaño de fuente a **_2.4rem_** y su ancho en bold.
+- Le damos un interlineado de **_2.6rem_**.
+- Cambiamos su color con la variable **_–just-white_**.
+
+```css
+.bitcoin-img-container h2 {
+    padding-top: 60px;
+    font-size: 2.4rem;
+    font-weight: bold;
+    line-height: 2.6rem;
+    color: var(--just-white);
+}
+```
+
+## 22. Estructura de sección de planes
+
+### Análisis del diseño para la sección de planes
+
+Tenemos varios elementos a observar:
+
+- Un primer contenedor con el título principal y la descripción.
+- Luego una _section_ para las tres tarjetas con los precios, cada tarjeta en su propio contenedor **_article_**.
+- Dentro de cada tarjeta encontramos un texto en caja flotante, otro con el tipo de pago, otro con el valor, otro con la descripción del plan y por último un **_button_** con un ícono a lado.
+
+![ejemplo de diseño de sección](https://static.platzi.com/media/articlases/Images/22.jpg)
+
+### Cómo hacer la maquetación
+
+Conociendo las etiquetas que debemos usar, empezamos a maquetar nuestra estructura:
+
+```html
+        <section id="plans" class="main-plans-container">
+            <div class="plans--title">
+                <h2>Escoge el plan que mejor se ajuste a ti.</h2>
+                <p>Cualquier plan te da acceso completo a nuestra plataforma.</p>
+            </div>
+            <section class="plans-container--slider">
+                <article class="plans-container--card">
+                    <p class="recomended">Recomendado</p>
+                    <div class="plan-info-container">
+                        <h3 class="plan-card--title">Pago Anual</h3>
+                        <p class="plan-card--price"><sup>$</sup> 99</p>
+                        <p class="plan-card--saving">*Ahorras $129 comparado al plan mensual.</p>
+                        <button class="plan-card--ca">Escoge este <span></span></button>
+                    </div>
+                </article>
+            </section>
+        </section>
+```
+
+Recuerda que puedes crear toda estructura con una sola línea de código utilizando **Emmet**, de esta forma:
+
+```
+(div>h2+p)+section>article>p+div>h3+p*2+button
+```
+
+- Agregamos un **_id_** a la sección principal para poder enlazarla con el botón “**Conoce nuestros planes**” que diseñamos en la sección del **_header_**. Colocamos el mismo nombre tanto en el ancla del botón, como en el **_id_** de la sección.
+- Creamos una etiqueta **_sup_** para el signo de dólar que se muestra junto al precio. Esta etiqueta define un fragmento de texto que se debe mostrar, por razones tipográficas, más alto, y generalmente más pequeño, que el tramo principal del texto.
+- Agregamos nombres descriptivos a cada etiqueta genérica y completamos los espacios con el contenido respectivo.
+
+Y así terminamos de crear la estructura de esta última sección. Ahora vamos a por esos estilos.
+
+## 23. Aplicando estilos a sección de planes
+
+### Llamar al contenedor principal
+
+- Llamamos la sección principal con su clase **_.main-plans-container_**.
+- Ajustamos su ancho en un **_100%_** y lo limitamos a un mínimo de **_320px_**.
+- Creamos un espaciado interno inferior de **_70px_**.
+- Centramos todo el texto contenido con **_text-align: center_**.
+
+```css
+.main-plans-container {
+    width: 100%;
+    min-width: 320px;
+    padding-bottom: 70px;
+    text-align: center;
+}
+```
+
+### Cómo aplicar estilos al contenedor título
+
+- Llamamos el contenedor del texto principal con su clase ~~**.plans–title**~~.
+- Ajustamos su ancho en un **_90%_** y lo limitamos a un mínimo de **_288px_**.
+- Colocamos el alto en **_auto_** para que se ajuste automáticamente en la relación al espacio que ocupe el texto.
+- Como hay un **_10%_** del ancho restante que no se ocupa, lo centramos con **_margin: 0 auto_**.
+- Creamos un margen inferior de **_50px_** para separarlo de las tarjetas.
+
+```css
+.plans--title {
+    width: 90%;
+    min-width: 288px;
+    height: auto;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+```
+
+#### Título
+
+- Llamamos la etiqueta **_h2_** desde su contenedor directo con **_.plans–title h2_**.
+- Ajustamos el tamaño de la fuente a **_2.4rem_** y su ancho en **_bold_**.
+- Agregamos un interlineado de **_2.6rem_** y cambiamos su color con la variable **_–black_**.
+
+```css
+.plans--title h2 {
+    padding-top: 50px;
+    font-size: 2.4rem;
+    font-weight: bold;
+    line-height: 2.6rem;
+    color: var(--black);
+}
+```
+
+#### Descripción
+
+- Llamamos la etiqueta **_p_** desde su contenedor directo con **_.plans–title p_**.
+- Ajustamos el tamaño de la fuente a **_1.4rem_** y su ancho en **_500_**.
+- Agregamos un interlineado de **_1.8rem_** y cambiamos su color al valor **_#757575_**.
+
+```css
+.plans--title p {
+    padding-top: 30px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1.8rem;
+    color: #757575;
+}
+```
+
+Este sería el resultado que obtendríamos en el navegador:  
+
+![image.png](https://static.platzi.com/media/articlases/Images/image%28222%29.png)
+
+## 24. Aplicando estilos a las tarjetas de la sección de planes
+
+### Contenedor de la tarjeta
+
+- Primero llamamos la clase del contenedor de la tarjeta con **_.plans-container–card_**.
+- Con **_position: relative_** aseguramos que el texto flotante se quede en este contenedor.
+- Le damos un ancho del **_70%_** para que se pueda ver parte de las otras dos tarjetas.
+- Limitamos su ancho mínimo en **_230px_** y su máximo en **_300px_**.
+- Le damos una altura absoluta de **_250px_**.
+- Agregamos un margen superior de **_50px_** e inferior de **_0px_**. Centramos la caja con **_auto_**.
+- Generamos un **_padding_** superior e inferior de **_0_**, y de **_15px_** a los lados.
+- Cambiamos el color de fondo de la tarjeta para que contraste con el color de fondo de su contenedor con la variable **_–just-white_**.
+- Redondeamos las esquinas de la tarjeta con **_border-radius: 15px_**.
+- Generamos una sombra a la caja con un **_box-shadow_**.
+
+```css
+.plans-container--card {
+    position: relative;
+    width: 70%;
+    min-width: 230px;
+    max-width: 300px;
+    height: 250px;
+    margin: 50px auto 0;
+    padding: 0 15px;
+    background-color: var(--just-white);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(89, 73, 30, 0.16);
+}
+```
+
+Este es el resultado que podremos observar en el navegador:  
+
+![image.png](https://static.platzi.com/media/articlases/Images/image%28223%29.png)
+
+El contenedor ya está terminado. Si te fijas, al agrandar o achicar el ancho de la pantalla el contenedor crece y se reduce hasta un límite, manteniéndose siempre en el centro.
+
+## 25. Detallando estilos en tarjetas de planes
+
+### Agregando estilos en las tarjetas de planes
+
+Ten en cuenta los siguientes elementos:
+
+#### Botón flotante
+
+- Llamamos la clase del párrafo con **_.recommended_**.
+- Establecemos su posición en absolute para moverlo dentro del contenedor.
+- Ajustamos su ancho en **_120px_** y su alto en **_31px_**.
+- Lo movemos hacia arriba hasta sacarlo del contenedor con **_top: -15px_**.
+- Centramos la caja con ***left: calc(50% - 60px)***.
+- Ajustamos el tamaño de fuente en **_1.2rem_**.
+- Le damos un espaciado interno en todos los lados de **_padding: 6px_**.
+- Ajustamos el color de fondo con la variable **_–bitcoin-orange_** y el **_color_** del texto con **_–just-white_**.
+- Redondeamos las esquinas de la caja con **_border-radius: 8px_**.
+
+```css
+.recommended {
+    position: absolute;
+    width: 120px;
+    height: 31px;
+    top: -15px;
+    left: calc(50% - 60px);
+    font-size: 1.2rem;
+    padding: 6px;
+    background-color: var(--bitcoin-orange);
+    border-radius: 8px;
+    color: var(--just-white);
+}
+```
+
+#### Título
+
+- Llamamos la clase de la etiqueta **_h3_** con **_.plan-card–title_**.
+- Le damos un espaciado superior con **_padding: 30px_**.
+- Ajustamos el tamaño de fuente en **_1.4rem_** y su peso en **_500_**.
+- Le damos un interlineado de **_1.8rem_**.
+- Ajustamos el color del texto con la variable **_–black_**.
+
+```css
+.plan-card--title {
+    padding-top: 30px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1.8rem;
+    color: var(--black);
+}
+```
+
+#### Precio
+
+- Llamamos la clase de la etiqueta **_p_** con **_.plan-card–price_**.
+- Le damos un espaciado superior e inferior de **_30px_** y **_0_** a los lados.
+- Ajustamos el tamaño de fuente en **_5.2rem_** y su peso en **_bold_**.
+- Le damos un interlineado de **_5.3rem_**.
+- Ajustamos el color del texto con la variable **_–black_**.
+
+Para el signo de dólar:
+
+- Llamamos la etiqueta **_sup_** desde su clase contenedora con **_.plan-card–price sup_**.
+- Ajustamos el tamaño de fuente en **_1.2rem_** y su peso en **_300_**.
+- Ubicamos el signo hasta arriba con **_vertical-align: 25px_**.
+
+```css
+.plan-card--price {
+    padding: 5px 0;
+    font-size: 5.2rem;
+    font-weight: bold;
+    line-height: 5.3rem;
+    color: var(--black);
+}
+.plan-card--price sup {
+    font-size: 1.2rem;
+    font-weight: 300;
+    vertical-align: 25px;
+}
+```
+
+#### Descripción
+
+Llamamos la etiqueta de párrafo con su clase .plan-card–saving.  
+Le damos un tamaño de fuente de 1.2rem y cambiamos su color a #757575.
+
+```css
+.plan-card--saving {
+    font-size: 1.2rem;
+    color: #757575;
+}
+```
+
+Hasta ahora, este sería nuestro resultado en pantalla:  
+
+![ejemplo de estilo en figma](https://static.platzi.com/media/articlases/Images/image%28226%29.png)
+
+## 26. Aplicando estilos al botón de call to action
+
+### Cambiar el botón por defecto
+
+- Llamamos la clase del botón con **_.plan-card–ca_**.
+- Le damos un ancho de **_150px_** y un alto de **_48px_**.
+- Añadimos un margen superior de **_20px_**.
+- Cambiamos su color de fondo a **_#faf8f7_** de acuerdo al proporcionado en el diseño.
+- Establecemos el grosor del borde en **_2px_** y le damos el color de la variable **_–bitcoin-orange_**.
+- Redondeamos ligeramente las esquinas con **_border-radius: 4px_**.
+- En caso que no se aplique la fuente que establecimos al inicio del documento, la traemos y la pegamos en el estilo actual con **_font-family: ‘DM Sans’, sans-serif_**.
+- Ajustamos el tamaño de fuente en **_1.4rem_** y su peso en **_bold_**.
+- Le damos un interlineado de **_1.8rem_** y el color de la variable **_–black_**.
+
+```css
+.plan-card--ca {
+    width: 150px;
+    height: 48px;
+    margin-top: 20px;
+    background-color: #faf8f7;
+    border: 2px solid var(--bitcoin-orange);
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1.8rem;
+    color: var(--black);
+}
+```
+
+#### Cómo modificar el Ícono
+
+- Llamamos la etiqueta span contenedora de nuestro ícono desde la clase del botón con **_.plan-card–ca span_**.
+- Usamos **_display: inline-block_** para que se mantengan en la misma línea que el texto.
+- Le damos un ancho y alto de **_20px_**.
+- Insertamos el ícono con un ***background-image: url("")***.
+- Para poder colocar el ícono a la misma altura del texto, usamos **_vertical-align: text-bottom_**.
+
+```css
+.plan-card--ca span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url("./assets/icons/orange-right-arrow.svg");
+    vertical-align: text-bottom;
+}
+```
+
+Tendríamos este resultado renderizado en nuestro navegador:  
+
+![ejemplo al aplicar estilos a un botón](https://static.platzi.com/media/articlases/Images/image%28227%29.png)
+
+## 27. Scroll horizontal con CSS
+
+Como desarrollador fronted vas a ocupar muchas veces frameworks para acelerar tu proceso de creación, como para crear este tipo de efectos. Sin embargo, para esta ocasión usaremos sólo código CSS con la intención de comprender cómo están construidos. ¡Vamos a nuestra hoja de estilos!
+
+Primero, para que nuestro contenedor pueda generar el scroll entre las tarjetas estas deben tenerlo. Centramos todas las tarjetas para general un scroll con **_scroll-snap-align: center_**. Esta línea la colocamos justo debajo del _position: relative_ del contenedor de nuestra tarjeta.
+
+```css
+.plans-container--card {
+    position: relative;
+    scroll-snap-align: center;
+    ...
+}
+```
+
+### Cómo hacer un scroll
+
+- Llamamos la clase del contenedor de las tarjetas con **_.plans-container–slider_**.
+- **_display: flex_** ya nos genera un scroll horizontal, pero se desborda del contenedor y se genera un **overflow** por fuera.
+- Le damos una altura de **_316px_**, mayor al contenedor de las tarjetas.
+- Generamos un scroll sobre el eje **_x_** con **_overflow-x: scrol_**. Esta propiedad establece lo que se muestra cuando el contenido desborda los bordes izquierdo y derecho de un elemento a nivel de bloque. Puede que no sea nada, una barra de desplazamiento o el contenido adicional.
+- **_overscroll-behabior_** establece lo que hace un navegador cuando alcanza el límite de un área de desplazamiento.
+- Para que al deslizarnos sobre las tarjetas la vista se centre en el centro de cada una de ellas como si tuviesen un iman, usamos **_scroll-snap-type: x proximity_**.
+
+```css
+.plans-container--slider {
+    display: flex;
+    height: 316px;
+    overflow-x: scroll;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+}
+```
+
+![image(228).png](https://static.platzi.com/media/user_upload/image%28228%29-c3539218-8fc2-4197-bf5b-0844a7e76283.jpg)
+
+En el navegador podemos observar que las tarjetas están pegadas una a otra. En CSS hay una nueva propiedad llamada gap que nos ayuda a resolver este problema.
+
+Actualmente gap es soportado por casi todos los navegadores, sin embargo, para usar una propiedad nueva, debemos al menos confirmar que tenga un **95% de disponibilidad** para evitar que los usuarios tengan una mala experiencia.
+
+Puedes consultar en la página [Can I Use](https://caniuse.com/), entre otras cosas, la cantidad de navegadores en que una propiedad está disponible. En este caso para solucionarlo vamos al contenedor de las tarjetas y buscamos la propiedad de **_margin_**.
+
+```css
+.plans-container--card {
+    ...
+    margin: 50px auto 0;
+    ...
+ }
+```
+
+Cambiamos el atributo auto por 15px.
+
+```css
+.plans-container--card {
+    ...
+    margin: 50px 15px 0;
+    ...
+ }
+```
+
+Y ya tendríamos este resultado:  
+
+![image(229).png](https://static.platzi.com/media/user_upload/image%28229%29-6f8a8125-db51-4400-9d26-474179ebd207.jpg)
+
+## 28. Footer
+
+### Estructura del footer
+
+El pie de página se divide en dos secciones bastante simples: una con los enlaces a redes sociales y otro con el logotipo de la empresa. Conociendo esto podemos crear las etiquetas que necesitamos.
+
+- En la primera sección agregamos los nombres de las redes mostradas en el diseño. Agregamos **_#_** a la dirección del enlace para evitar que se actualice la página al hacer clic sobre el mismo.
+- En la segunda sección llamamos la imagen con una etiqueta **_img_**. Agregamos una descripción sobre la imagen para la parte de accesibilidad.
+- Agregamos clases a cada una de las secciones con **_left_** y **_right_**, respectivamente.
+
+```html
+    <footer>
+        <section>
+            <ul>
+                <li><a href="#">Linkedin</a></li>
+                <li><a href="#">Crunchbase</a></li>
+                <li><a href="#">Hackernews</a></li>
+            </ul>
+        </section>
+        <section>
+            <img src="./assets/img/logo-footer.svg" alt="Logo Batatabit">
+        </section>
+    </footer>
+```
+
+### Cómo dar estilos al footer
+
+Ten presente los siguientes elementos:
+
+#### Contenedor
+
+- Llamamos la etiqueta **_footer_** directamente para aplicar estilos.
+- Usamos **_display: flex_** para que ambas secciones estén una a lado de otra.
+- Le damos un ancho del **_100%_** y un alto de **_150px_**.
+- Establecemos el color de fondo con la variable **_–bitcoin-orange_**.
+
+```css
+footer {
+    display: flex;
+    width: 100%;
+    height: 150px;
+    background-color: var(--bitcoin-orange);
+}
+```
+
+#### Secciones
+
+- Llamamos la etiqueta **_section_** desde la etiqueta **_footer_** para trabajar con las dos secciones.
+- Mantenemos el **_display: flex_**.
+- Centramos las cajas con **_justify-content: center_**.
+- Alineamos los elementos dentro de los contenedores con **_align-items: center_**.
+
+```css
+footer section {
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+}
+```
+
+- Llamamos la etiqueta **_ul_** desde la clase **_.left_** de la etiqueta **_footer_** para ser específicos.
+- Ajustamos el ancho de la fuente en **_1.4rem_** y su peso en **_500_**.
+- Le damos un interlineado de **_1.8rem_**.
+- Quitamos los bullet points de los elementos con **_list-style: none_**.
+
+```css
+footer .left ul {
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1.8rem;
+    list-style: none;
+}
+```
+
+- A cada elemento de la lista le damos un margen superior e inferior de **_10px_** y **_0_** a los lados.
+- Quitamos el subrrayado de los textos que genera la etiqueta **_a_** con **_text-decoration: none_**.
+- Cambiamos el color del texto con **_–just-white_**.
+
+```css
+.left li {
+    margin: 10px 0;
+}
+.left a {
+    text-decoration: none;
+    color: var(--just-white);
+```
+
+
+## 29. Aplicando media queries
+
+### Analizando nuestro proyecto
+
+Como ya sabes, debemos tener un mínimo de diseños para tres versiones: celular, tablet y escritorio. Es decir, tres archivos CSS linkeados en nuestro archivo index.html. Los colocamos en el siguiente orden:
+
+1. Hoja de estilos principales (styles.css)
+2. Hoja de estilos para tablet (tablet.css)
+3. Hoja de estilos para desktop (desktop.css)
+
+Como puedes ver, se agregan de menor a mayor tamaño, porque estamos trabajando desde Mobile First. En este caso hay pocos elementos en nuestro proyecto, por lo que agregar una vista más nos bastará para obtener buenos resultados.
+
+```html
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./css/tablet.css" media="(min-width: 930px)">
+```
+
+Es importante que especifiquemos en la propiedad **_media_**, el ancho mínimo que necesita tener la pantalla para descargar este archivo. De esta manera evitaremos que el usuario tenga que descargar todos los archivos cuando solo va a usar uno.
+
+Ahora vamos a trabajar en las secciones que necesitan unos cuantos ajustes.
+
+### Ajustando la sección de tablas
+
+Al pasar a pantallas más grandes se genera demasiado espacio alrededor de las tablas. Colocarlas una al lado de otra ayuda a tener menos scroll vertical y una vista más cómoda para el usuario.
+
+Para ello:
+
+- Llamamos la clase del contenedor de las tablas con **_.main-tables-container_**.
+- Usamos **_display: flex_** para que las tablas se acomoden juntas.
+- Ajustamos el ancho a **_930px_** para que no crezca más de eso.
+- Centramos las tablas con **_margin: 0 auto_**.
+
+```css
+.main-tables-container {
+    display: flex;
+    width: 930px;
+    margin: 0 auto;
+}
+```
+
+### Ajustando la sección de beneficios
+
+Tenemos el mismo problema que el anterior. Hay demasiado espacio sobrante en el que debemos reacomodar los elementos.
+
+Para ello:
+
+- Llamamos la clase contenedora de las tarjetas con **_.product-cards–container_**.
+- Las acomodamos al ancho de la caja con **_display: flex_**.
+- Acomodamos las cajas en columnas con **_flex-wrap: wrap_**.
+- Limitamos el crecimiento de la caja en **_930px_**. Así nos aseguramos que no se vayan a crear más de dos columnas.
+- Centramos las tablas con **_margin: 0 auto_**.
+
+```css
+.product-cards--container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 930px;
+    margin: 0 auto;
+}
+```
+
+### Ajustando la sección de planes
+
+Como podemos observar, las tarjetas de planes se quedan a la izquierda de la pantalla al superar dimensiones de 930px. Esto se debe a que usa display: flex para funcionar.
+
+Por lo que sin cambiarlo, agregamos una simple línea de código a la clase del mismo contenedor:
+
+- Centra el contenido con **_justify-content: center_**.
+
+```css
+.plans-container--slider {
+    justify-content: center;
+}
+```
+
+## 30. Análisis con Lighthouse
+
+### Cómo acceder a Lighthouse
+
+1. Abrimos el proyecto en nuestro navegador.
+    
+2. Clic derecho en alguna parte del proyecto. Clic en “Inspeccionar” para abrir las DevTools.
+    
+3. Al extender la sección de pestañas, seleccionamos “Lighthouse”.
+    
+4. Observamos varias opciones que podemos analizar. Puedes seleccionar todas o las que necesites. Sólo podemos generar un reporte por versión mobile o desktop. Si quieres ambas, genera otro reporte con la opción que te falte.
+    
+5. Una vez hecha la elección, clic en “Generar reporte”. Esperamos a que termine de generarlo.
+    
+6. Analizamos los resultados
+    
+
+### Cómo monitorear el performance
+
+Toma en cuenta que no debes frustarte por resultados no perfectos. Mientras se encuentre por encima del 90% significa que tu página está bien construida. Esto es porque hay muchos factores que determinan estas estadísticas como una mala conexión a internet, un mal computador o algún otro incoveniente que no puedas controlar.
+
+El valor más bajo es el performance, o la velocidad de carga de nuestra página. Revisamos las razones haciendo clic sobre el mismo valor.
+
+Se despliegan todos los detalles que se encontraron. Vamos a la sección de oportunidades.
+
+Al desplegar cada una de las sugerencias que nos hace la herramienta, encontramos que la imagen de la sección comodín está algo pesada. Incluso nos recomienda comprimirla para aliviar un poco la puntuación que nos está dando.  
+Podríamos también, por ejemplo, seleccionar un tamaño de imagen más pequeño para móvil y otro para desktop. De esta manera sólo se descargaría la que necesite el usuario.
+
+### Cómo monitorear _accessibility_
+
+Esta parte es muy importante. Lighthouse nos recomienda ajustar mejor los constrastes de ciertas etiquetas de párrafo para personas que tienen problemas de visión. En este caso podrías subir la opacidad de ciertas fuentes cuyo fondo tiene un color similar.
+
+Te recomiendo tomar el [Curso de Accesibilidad Web](https://platzi.com/cursos/accesibilidad-web/) para que puedas profundizar más sobre este tema.
+
+### Qué puedes hacer con el feature de “mejora”
+
+Al realizar el análisis en la versión de escritorio vemos cómo el performance sube mucho. Esto se debe a que una computadora puede tener mucho más poder de cómputo que un dispositivo móvil, como en este caso. Si aplicaste muchos estilos y elementos personales es probable que la parte de performance esté más baja.
+
+Te recomiendo tomar el [Curso de Optimización Web](https://platzi.com/cursos/web-performance/) de cualquier manera para construir páginas web que vayan a la velocidad de la luz.
+
+Toma en cuenta las recomendaciones que hace Lighthouse ya que es una forma de mejorar tu página en estos sentidos y lograr que sea mucho más fácil y cómoda de usar para la mayoría de usuarios posibles. ¡Haz de esta herramienta un superpoder para mejorar tus proyectos!
+
+## 31. Cierre y próximos pasos
+
+¡Muchas felicidades! ¡Acabas de terminar un proyecto entero desde cero! No se trata de una página de una empresa imaginaria, sino de una empresa real que puedes agregar a tu portafolio con total seguridad.
+
+Has fortalecido muchos tus conocimientos en HTML y CSS, aprendido herramientas nuevas e implementado buenas prácticas en la construcción de este proyecto.
+
+## Preguntas del Examen 
+
+
+1.
+
+¿Qué es y para qué nos sirve Figma?
+
+Figma es una web based herramienta que nos ayuda a diseñar y prototipar mayormente interfaces de aplicaciones.
+
+2.
+
+¿A qué nos referimos cuando hablamos de HTML Semántico?
+
+Es construir la estructura de nuestro documento utilizando las etiquetas de HTML para las partes o secciones específicas para las que fueron creadas.
+
+3.
+
+Si voy a utilizar muchos iconos, ¿cual es el formato que más me conviene utilizar?
+
+SVG
+
+4.
+
+Si estoy utilizando imágenes tipo fotografías, ¿cuál es el mejor formato?
+
+JPG
+
+5. Esta mal
+
+¿Qué es una variable de CSS?
+
+Es una regla de estilos que se le agrega a un elementos de HTML
+
+REPASAR CLASE
+
+6.
+
+¿Para qué nos sirve utilizar metodologías tipo BEM?
+
+Es una convención que nos ayuda a nombrar nuestras clases de CSS de forma que al momento de dar estilos evitemos pisar estilos de otros elementos.
+
+7.
+
+¿Cómo hacemos una esquina redondeada usando CSS?
+
+border-radius
+
+8.
+
+¿Qué son los degradados en CSS?
+
+Es una propiedad de CSS que le permite mostrar una transformación suave entre dos o más de dos colores específicos.
+
+9.
+
+¿Cuál es la diferencia entre Margin y Padding?
+
+En CSS, el Margin es la propiedad mediante la cual podemos crear un espacio exterior alrededor de los elementos. El Padding es la propiedad mediante la cual podemos generar el espacio interior de un elemento.
+
+10.
+
+¿Qué tipo de Position utilizamos cuando decimos que el elemento se saca completamente del flujo normal del diseño de página?
+
+Absolute
+
+11.
+
+¿Cuál es la forma de cambiar elementos inline a elementos block?
+
+display: block;
+
+12.
+
+¿Qué propiedad de CSS utilizamos para asegurar que el width y height de un elemento sea el mismo que definimos sin importar el padding y border que tenga el elemento?
+
+box-sizing: border-box;
+
+13.
+
+¿Con qué position, no puedo utilizar las propiedades de top, right, bottom y left en css?
+
+static
+
+14.
+
+¿Cuántas etiquetas de encabezado existen en HTML?
+
+6
+
+15.
+
+¿Qué propiedad tendría que utilizar para alinear al centro los elementos de un contenedor que está como display flex?
+
+justify-content: center;
+
+16.
+
+¿Para qué sirven los media queries?
+
+Es la forma en la que puedo marcar break points para cambios en el layout dependiendo del tamaño de la pantalla del dispositivo.
+
+17.
+
+Cuando estás trabajando con tablas en HTML ¿qué etiqueta utilizamos para representar la fila de la tabla?
+
+tr
+
+18.
+
+Cuando estás trabajando con tablas en HTML ¿qué etiqueta utilizamos para representar la celda de la tabla?
+
+td
+
+19.
+
+¿Cuál es la medida base que toma rem en CSS?
+
+rem toma la medida de font-size del root element, que en este caso sería html
+
+20.
+
+¿Cuál es unos de los beneficios de utilizar medidas relativas en font-size?
+
+Nos ayuda en temas de accesibilidad, la fuente podría hacerse más grande si el usuario incrementa el tamaño de fuente desde su navegador
