@@ -176,4 +176,85 @@ Podemos agregar un hover para mejorar el diseño:
 
 [Entra aqui](https://github.com/degranda/Platzi-blog/tree/master/Clase%2025%20(media%20queries))
 
+## EXAMEN
+
+1. ¿Qué es emmet?
+
+	`Es un plugin que nos ayuda a escribir código HTML y CSS a base de abreviaciones.`
+
+2. ¿Qué etiqueta utilizarías para crear la barra de navegación de tu proyecto?
+
+	``nav``
+
+3. ¿Cuál de los siguientes doctype es el que utilizarías para un documento HTML5?
+
+	``<!Doctype html>``
+
+4. ¿Qué metodología podríamos utilizar para nombrar de mejor forma tus clases en CSS?
+
+	``BEM``
+
+5. ¿A qué nos referimos cuando hablamos de HTML5 Semántico?
+
+	``Describir con mayor precisión cuál es su contenido.``
+
+6. ¿De qué forma puedo darle el mismo estilo a más de un elemento en css?
+
+	``Utilizando la “,” después de cada selector.``
+
+7. ¿De qué forma podría generar estilos en css que pueda reutilizar para otros selectores sin que tenga que replicar propiedades?
+
+	``Utilizando variables de CSS.``
+
+8. ¿Qué etiquetas de HTML5 tienen "display: block;" por defecto?
+
+	``header, footer, div, p, nav, h1.``
+
+9. ¿Cuál es la forma adecuada de llamar un media query?
+
+	``@media (condicional)``
+
+10. ¿Para qué nos puede ayudar implementar CSS Grid Layout en nuestros estilos?
+
+	``Nos facilita posicionar contenedores creando una cuadrícula y alineando elementos en filas y columnas.``
+
+11. ¿De qué forma podría crear una cuadrícula de 3 x 3 utilizando Grid Layout?
+
+	``display: grid; grid-template-columns: 1fr 1fr 1fr; grid -template-rows: 1fr 1fr 1fr;``
+
+12. ¿Para qué nos ayuda colocar el “alt” en una img?
+
+	``Ayuda a usuarios con problemas visuales que utilizan herramientas de lectura de pantalla.``
+
+13. ¿Cuál es la forma de agregar una imagen de fondo con css?
+
+	``background-image: url(" ");``
+
+14. ¿Cuál sería una forma de agregar fuentes a nuestro proyecto?
+
+	``@import url(' ');``
+
+15. ¿Cuál sería una regla en css para limitar el tamaño máximo de algún contenedor?
+
+	``max-width``
+
+16. ¿Qué podría esperar al utilizar la regla de “margin: 0 auto;”?
+
+	``Centrar de forma horizontal un contenedor.``
+
+17. ¿De qué forma podría centrar la imágen de fondo?
+
+	``background-size: auto;`` Esta mal
+
+18. ¿Cómo puedo generar espacio entre las letras de un texto?
+
+	``letter-spacing``
+
+19. En nuestro ejemplo del Nav, ¿qué propiedad de CSS utilizamos para posicionar contenido hacia algún extremo?
+
+	j``ustify-items``
+
+20. ¿Cuál es la atributo que utilizamos en la etiqueta "a" para crear un hipervínculo?
+
+	``href``
 
