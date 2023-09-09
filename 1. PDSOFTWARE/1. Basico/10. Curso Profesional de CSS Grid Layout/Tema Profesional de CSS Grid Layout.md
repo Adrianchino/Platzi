@@ -89,4 +89,101 @@ Post procesadores son herramientas que procesan el CSS y lo transforman en una n
 - **Evergreen Browsers**
     - Navegadores compatibles con nuevas características de la web
 
-## 5. 
+## 5. ¿CSS Grid es una idea nueva? La evolución de la especificación
+
+> CSS comenzó como algo muy simple.
+
+> Era solo una forma de crear una vista de un documento en una pantalla pequeña muy simple en ese momento.
+
+> Hace veinte años, las pantallas eran muy pequeñas. Entonces, cuando vimos que podíamos hacer una hoja de estilo para documentos, pensamos: …
+
+> Bueno, ¿qué más podemos hacer ahora que tenemos un sistema para hacer hojas de estilo?
+
+- Cuando comenzaron en CSS pensaron tomar un diseño similar a las revistas
+    
+    - Las imágenes, textos, pie de páginas tenían ciertos lugares
+    - Todo el documento tenía un sentido
+- Se tenía la idea de un sistema de layout
+    
+- Microsoft necesitaba urgentemente una herramienta de diseño robusto y flexible para la web si la web iba a ser una opción para el desarrollo de aplicaciones nativas en windows
+    
+- Hubo 3 ideas fundamentales
+    
+    1. Idea de Microsoft
+    2. Diseño avanzado de Bos
+    3. Adición de líneas de cuadricula de Linss
+- Antes de que una recomendación candidata (Borrador Final) pueda convertirse en una recomendación propuesta, la W3C necesita ver al menos dos implementaciones independiendientes e interoperables
+    
+- Hubo un cambio fundamental con CSS Grid
+    
+    - **Jen Simmons** ⇒ Colocó muchas demostraciones que creó para CSS Grid en la web
+- Sin el entusiasmo de los desarrolladores, proveedores de navegadores son reacios a gastar dinero para ver si la idea gana terreno
+    
+- Los navegadores empezaron a sacar su compatible con los navegadores
+    
+
+**RESUMEN:** La adopción de CSS Grid fue progresiva, fue algo que se tenía la idea de crear un layout de este tipo. Gracias al gran recibimiento que tuvo los proveedores de navegadores decidieron invertir en esta característica.
+
+## 6. Qué significa Grid para CSS?
+
+<h4>**Apuntes**</h4>
+
+- CSS Grid requiera una forma completamente de pensar sobre el diseño en CSS
+- Es una de las herramientas de diseño más poderosa inventada para CSS
+- Es una alternativa más simple a diferencia de técnicas del pasado
+
+![example4-screenshot.png](https://static.platzi.com/media/user_upload/example4-screenshot-fbaed83b-b542-4ef2-86ba-06fd49a8134e.jpg)
+
+## 7. Técnicas de alineamiento antes de CSS Grid: margin y line-height
+
+### **Margin Collapse**  
+
+El colapso de márgenes ocurre cuando el margen top y bottom de 2 elementos colindan y el margen final es el que sea mayor. Es decir, si un elemento tiene `margin-bottom: 20px` y el otro elemento `margin-top: 10px`, el margen final entre ambos elementos no será de 30px, si no que será de solo 20px.  
+Cabe aclarar que esto ocurre cuando usamos el `display` por defecto `block`.
+
+## 8. Técnicas de alineamiento antes de CSS Grid: table-cell y positions
+
+Los valores que recibe la función _**translate**_ se calculan con base en el **tamaño del elemento**. Esto significa que si el elemento tiene un width de 60px, al usar `transform: translate(-100%, 0)` sería lo mismo que si pusiéramos `transform: translate(-60px, 0)`.  
+Aplica de igual forma para el eje Y con respecto al height.
+
+hay otra técnica de alineamiento usando calc(), y sería de la siguiente manera:
+
+```css
+.elemento1{
+	position: absolute;
+	top: calc(50% - 30px);
+	left: calc(50% - 30px);
+}
+```
+
+## 9. Técnicas de alineamiento antes de CSS Grid: pros y contras
+
+
+Las técnicas de alineamiento vistas son pertenecientes a CSS2 pero se siguen utilizando a la fecha, claro que estas cuentan con sus ventajas y desventajas.
+
+Margin
+
+- Ventajas: El valor auto alinea horizontalmente cualquier elemento con cualquier ancho.
+- Desventajas: Alinear verticalmente, ya que, en cada caso, deberán calcularse estos valores.
+
+line-height
+
+- Ventajas: correcta alineación.
+- Desventajas: si el texto ocupa más de una linea el elemento toma un alto más grande de lo necesario para los cálculos.
+
+table-cell
+
+- Ventajas: La alineación vertical no esta condicionada por fuentes, tamaños de fuentes o alturas de linea.
+- Desventajas: vertical-align sólo se aplica a elementos inline.
+
+La mayor limitante de todas ellas es que contienen muchas propiedades físicas:
+
+- margin-top
+- padding-bottom
+- border-right
+- left
+
+## 10. 
+
+
+
