@@ -2825,7 +2825,7 @@ https://nasal-zoo-be9.notion.site/Leyendo-HTML-desde-JavaScript-2c106b97980e419f
 3. Ya tienes en JavaScript una variable `input1` que selecciona un input de tu HTML. ¿Cómo puedes leer el valor que escriban los usuarios en ese input?
 	- Ambas respuestas son correctas.
 	- 📌 Mal Ambas respuestas son INCORRECTAS.
-	- input1.getAttribute('value')
+	- 📌 Mal input1.getAttribute('value')
 	- input1.value
 
 4. ¿Qué herramienta de JavaScript nos permite editar elementos de HTML?
