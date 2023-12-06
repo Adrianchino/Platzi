@@ -1,2 +1,2 @@
 # Platzi
-Aquí aprenderás acerca de Programación 
+Aprenderás acerca de Programación relacionado a la web
