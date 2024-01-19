@@ -230,6 +230,64 @@ _Contribución creada por Guadalupe Monge Barale con los aportes de Reynaldo Len
 ## Maquetación responsiva: pantallas de autenticación
 ### 5. Crear nueva contraseña: HTML
 
+#### **Atributos de Label**
+
+> Label: Es una etiqueta para un elemento en una interfaz de usuario, en este caso es utilizado para indicar el funcionamiento de la casilla password “input type=password class=input-password”
+
+```html
+<label for="password" class="label">Password</label>
+<input type="password" id="password" placeholder="✱✱✱✱" class="input-password">
+```
+
+**For**  
+Ademas de ayudarnos a nivel semantico con el posicionamiento en google, nos ayuda a redirigir el puntero hacia el input relacionando estas 2 etiquetas.  
+Ejemplo:
+
+> Si ponemos Name en el for de label y Name en el id de input, el navegador entiende la relacion entre ellos 2 y al momento de hacer clip en el label directamente te lleva al input.
+
+```html
+<label for="Name">Click me</label>
+<input type="text" id="Name" name="Name"/>
+```
+
+[Referencia](https://developer.mozilla.org/es/docs/Web/HTML/Element/label#resultado)  
+**Class**  
+Es un identificador que nos ayuda a acceder a elementos especificos dentro de un HTML  
+Ejemplo:
+
+> Podemos nombrar a un button como Button1 para luego ubicarlo facilmente
+
+```html
+<input type="button" class="Button1">
+```
+
+#### Tips
+
+##### Mejora tu productividad con abreviaturas emmet, escribe menos, obtén el mismo resultado
+
+Emmet usa la sintaxis de los selectores de CSS para hacer tu vida más fácil cuando debas tratar con HTML
+
+```css
+.container>img.logo+h1.title{Create a new password}+p.subtitle{Enter a new password for youraccount}+form.form>label.label{Password}+input:password+label.label{Re-enter password}+input:password^button:submit{Confirm password
+```
+
+Copia el texto de arriba, cierra la ultima llave con un _}_y presiona tab, el editor te debería autogenerar todo este maquetado:
+
+```html
+<div class="container">
+	<img src="" alt="" class="logo">
+	<h1 class="title">Create a new password</h1>
+	<p class="subtitle">Enter a new password for youraccount</p>
+	<form action="" class="form">
+		<label for="" class="label">Password</label>
+		<input type="password" name="" id="">
+		<label for="" class="label">Re-enter password</label>
+		<input type="password" name="" id="">
+	</form>
+	<button type="submit">Confirm password</button>
+</div>
+```
+
 
 ### 6. Crear nueva contraseña: CSS
 
