@@ -3114,8 +3114,8 @@ _**Contribuciones del curso creadas por** [Andrés Guano](https://platzi.com/p/
 	- node start
 
 10. `string.includes(value`) fue implementado en:
-	- 📌 ES7
-	- ES6
+	- ES7
+	- 📌 ES6
 	- ECMAScript 6
 	- ES2015
 	- ES8
