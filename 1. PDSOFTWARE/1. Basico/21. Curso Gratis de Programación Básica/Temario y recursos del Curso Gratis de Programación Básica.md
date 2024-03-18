@@ -1944,4 +1944,1497 @@ alert(saludo + " " + profesor)
 
 ## Desarrollando un juego con HTML y JavaScript
 
-### 16. 
+### 16. Maquetación con HTML
+
+- **MAQUETACIÓN**: Crear la estructura de el contenido de una página web.
+    
+- La etiqueta **span** es un contenedor en línea genérico para redactar contenido, que no representa inherentemente nada.
+#### Código de la clase:
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>MOKEPON!</title>
+    </head>
+    <body>
+        <h1>MOKEPON! 🔥💧🌱</h1>
+
+        <section id="seleccionar-mascota">
+            <h2>Elige tu mascota:</h2>
+
+            MASCOTAS
+
+            <button>Seleccionar</button>
+        </section>
+
+        <section id="seleccionar-ataque">
+            <h2>Elige tu ataque:</h2>
+
+            <p>Tu mascota tiene <span>3</span> vidas</p>
+            <p>Las mascota del enemigo tiene <span>3</span> vidas</p>
+
+            <p>
+                <button>Fuego 🔥</button>
+                <button>Agua 💧</button>
+                <button>Tierra 🌱</button>
+            </p>
+        </section>
+
+        <section id="mensajes">
+            <p>Tu mascota atacó con FUEGO, las mascota del enemigo atacó con TIERRA - GANASTE 🎉</p>
+        </section>
+
+        <section id="reiniciar">
+            <button>Reiniciar</button>
+        </section>
+    </body>
+</html>
+```
+
+### 17. Sección de elegir mascota
+
+#### Algunos ejemplo etiqueta Input Html
+
+![Apuntes de Tags](https://i.pinimg.com/originals/f1/7e/7b/f17e7b5fc4c4d686eb997959348907da.jpg)
+
+#### Codigo de la clase 
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>MOKEPON!</title>
+    </head>
+    <body>
+        <h1>MOKEPON! 🔥💧🌱</h1>
+
+        <section id="seleccionar-mascota">
+            <h2>Elige tu mascota:</h2>
+
+            <input type="radio" name="mascota" id="hipodoge" /> 
+            <label for="hipodoge">Hipodoge</label> <br>
+            
+            <input type="radio" name="mascota" id="capipepo" /> 
+            <label for="capipepo">Capipepo</label> <br>
+            
+            <input type="radio" name="mascota" id="ratigueya" /> 
+            <label for="ratigueya">Ratigueya</label> <br><br>
+
+            <button>Seleccionar</button>
+        </section>
+
+        <section id="seleccionar-ataque">
+            <h2>Elige tu ataque:</h2>
+
+            <p>Tu mascota tiene <span>3</span> vidas</p>
+            <p>Las mascota del enemigo tiene <span>3</span> vidas</p>
+
+            <p>
+                <button>Fuego 🔥</button>
+                <button>Agua 💧</button>
+                <button>Tierra 🌱</button>
+            </p>
+        </section>
+
+        <section id="mensajes">
+            <p>Tu mascota atacó con FUEGO, las mascota del enemigo atacó con TIERRA - GANASTE 🎉</p>
+        </section>
+
+        <section id="reiniciar">
+            <button>Reiniciar</button>
+        </section>
+    </body>
+</html>
+
+```
+
+### 18. # ¿Dónde ubicar la etiqueta script? Conectando HTML con JavaScript?
+
+#### Eventos que podemos escuchar con:  
+##### **addEventListener("")**
+
+- **blur** = Cuando el elemento pierde el foco.
+
+- **click** = El usuario hace clic sobre el elemento.
+
+- **dblclick** = El usuario hace doble clic sobre el elemento.
+
+- **focus** = El elemento gana el foco.
+
+- **keydown** = El usuario presiona una tecla.
+
+- **keypress** = El usuario presiona una tecla y la mantiene pulsada.
+
+- **keyup** = El usuario libera la tecla.
+
+- **load** = El documento termina su carga.
+
+- **mousedown** = El usuario presiona el botón del ratón en un elemento.
+
+- **mousemove** = El usuario mueve el puntero del ratón sobre un elemento.
+
+- **mouseout** = El usuario mueve el puntero fuera de un elemento.
+
+- **mouseover** = El usuario mantiene el puntero sobre un elemento.
+
+- **mouseup** = El usuario libera el botón pulsado del ratón sobre un elemento.
+
+#### Código de la clase: 
+#### HTML:
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>MOKEPON!</title>
+    </head>
+    <body>
+        <h1>MOKEPON! 🔥💧🌱</h1>
+
+        <section id="seleccionar-mascota">
+            <h2>Elige tu mascota:</h2>
+
+            <input type="radio" name="mascota" id="hipodoge" /> 
+            <label for="hipodoge">Hipodoge</label> <br>
+            
+            <input type="radio" name="mascota" id="capipepo" /> 
+            <label for="capipepo">Capipepo</label> <br>
+            
+            <input type="radio" name="mascota" id="ratigueya" /> 
+            <label for="ratigueya">Ratigueya</label> <br><br>
+
+            <button id="boton-mascota">Seleccionar</button>
+        </section>
+
+        <section id="seleccionar-ataque">
+            <h2>Elige tu ataque:</h2>
+
+            <p>Tu mascota tiene <span>3</span> vidas</p>
+            <p>Las mascota del enemigo tiene <span>3</span> vidas</p>
+
+            <p>
+                <button id="boton-fuego">Fuego 🔥</button>
+                <button id="boton-agua">Agua 💧</button>
+                <button id="boton-tierra">Tierra 🌱</button>
+            </p>
+        </section>
+
+        <section id="mensajes">
+            <p>Tu mascota atacó con FUEGO, las mascota del enemigo atacó con TIERRA - GANASTE 🎉</p>
+        </section>
+
+        <section id="reiniciar">
+            <button id="boton-reiniciar">Reiniciar</button>
+        </section>
+
+				<script src="./js/mokepon.js"></script>
+    </body>
+</html>
+```
+
+#### JavaScript:
+
+```js
+function seleccionarMascotaJugador() {
+
+  alert("SELECCIONASTE TU MASCOTA");
+}
+
+let botonMascotaJugador = document.getElementById("boton-mascota");
+
+botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
+```
+
+### 19.  Escuchando eventos con JavaScript
+
+Como dato, al hacer `addEventListener` no es necesario definir la función por separado. Podemos hacer esto:
+
+```js
+document.addEventListener('click', () => {
+	alert("SELECCIONASTE TU MASCOTA")
+}) 
+```
+
+A veces será más cómodo de una forma, otras veces será más claro de la otra. Úsenlo con sabiduría
+
+#### Código de la clase: 
+
+En este Codigo estamos utilizando el llamado script fuera del body del html ---->
+
+##### HTML
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>MOKEPON!</title>
+        <script src="./js/mokepon.js"></script> 👈🏼👈🏼👈🏼
+    </head>
+    <body>
+        <h1>MOKEPON! 🔥💧🌱</h1>
+
+        <section id="seleccionar-mascota">
+            <h2>Elige tu mascota:</h2>
+
+            <label for="hipodoge">Hipodoge</label>
+            <input type="radio" name="mascota" id="hipodoge" />
+            
+            <label for="capipepo">Capipepo</label>
+            <input type="radio" name="mascota" id="capipepo" />
+            
+            <label for="ratigueya">Ratigueya</label>
+            <input type="radio" name="mascota" id="ratigueya" />
+
+            <button id="boton-mascota">Seleccionar</button>
+        </section>
+
+        <section id="seleccionar-ataque">
+            <h2>Elige tu ataque:</h2>
+
+            <p>Tu mascota tiene <span>3</span> vidas</p>
+            <p>Las mascota del enemigo tiene <span>3</span> vidas</p>
+
+            <p>
+                <button id="boton-fuego">Fuego 🔥</button>
+                <button id="boton-agua">Agua 💧</button>
+                <button id="boton-tierra">Tierra 🌱</button>
+            </p>
+        </section>
+
+        <section id="mensajes">
+            <p>Tu mascota atacó con FUEGO, las mascota del enemigo atacó con TIERRA - GANASTE 🎉</p>
+        </section>
+
+        <section id="reiniciar">
+            <button id="boton-reiniciar">Reiniciar</button>
+        </section>
+    </body>
+</html>
+```
+
+#### JavaScript
+
+```js
+function iniciarJuego() {
+  let botonMascotaJugador = document.getElementById("boton-mascota");
+  botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
+}
+function seleccionarMascotaJugador() {
+  alert("SELECCIONASTE TU MASCOTA");
+}
+window.addEventListener("load", iniciarJuego);
+```
+
+### 20. addEventListener
+
+Les comparto un algoritmo que hice para entender que esta sucediendo sin tanto código de por medio.
+
+![algoritmo de inputs.png](https://static.platzi.com/media/user_upload/algoritmo%20de%20inputs-bd7ce2b9-e4a5-4199-a104-e738672b3341.jpg)
+
+#### Código de la clase:
+
+##### JavaScript
+```js
+function iniciarJuego() {
+  let botonMascotaJugador = document.getElementById("boton-mascota");
+  botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
+}
+function seleccionarMascotaJugador() {
+  let inputHipodoge = document.getElementById("hipodoge");
+  let inputCapipepo = document.getElementById("capipepo");
+  let inputRatigueya = document.getElementById("ratigueya");
+
+  if (inputHipodoge.checked) {
+    alert("Seleccionaste a Hipodoge");
+  } else if (inputCapipepo.checked) {
+    alert("Seleccionaste a Capipepo");
+  } else if (inputRatigueya.checked) {
+    alert("Seleccionaste a Ratigueya");
+  } else {
+    alert("Opcion Invalida, Selecciona una mascota");
+  }
+}
+window.addEventListener("load", iniciarJuego);
+```
+
+### 21. Manipulación del DOM
+
+#### **RESUMEN**
+
+Para alterar el texto que tenemos en nuestro HTML (o manipular el DOM como se dice técnicamente), se puede usar innerHTML.
+
+Con la etiqueta`` <span id="">`` en el html, indicamos que este texto va a ser manipulado dinámicamente, asi que obtenemos su id como hemos hecho en clases anteriores y guardamos el elemento en una variable, asi esta variable la podemos editar y reemplazar por el texto que queramos.  
+
+![Captura desde 2022-07-29 21-13-01.png](https://static.platzi.com/media/user_upload/Captura%20desde%202022-07-29%2021-13-01-f299f148-499b-423b-b3b5-09d4129060aa.jpg)
+
+#### Codigo de la clase:
+
+##### HTML:
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>MOKEPON!</title>
+    </head>
+    <body>
+        <h1>MOKEPON! 🔥💧🌱</h1>
+
+        <section id="seleccionar-mascota">
+            <h2>Elige tu mascota:</h2>
+
+            <input type="radio" name="mascota" id="hipodoge" /> 
+            <label for="hipodoge">Hipodoge</label> <br>
+            
+            <input type="radio" name="mascota" id="capipepo" /> 
+            <label for="capipepo">Capipepo</label> <br>
+            
+            <input type="radio" name="mascota" id="ratigueya" /> 
+            <label for="ratigueya">Ratigueya</label> <br><br>
+
+            <button id="boton-mascota">Seleccionar</button>
+        </section>
+
+        <section id="seleccionar-ataque">
+            <h2>Elige tu ataque:</h2>
+
+            <p>Tu mascota <span id="mascota-jugador"></span> tiene <span>3</span> vidas</p>
+            <p>Las mascota <span id="mascota-enemigo"></span> del enemigo tiene <span>3</span> vidas</p>
+
+            <p>
+                <button id="boton-fuego">Fuego 🔥</button>
+                <button id="boton-agua">Agua 💧</button>
+                <button id="boton-tierra">Tierra 🌱</button>
+            </p>
+        </section>
+
+        <section id="mensajes">
+            <p>Tu mascota atacó con FUEGO, las mascota del enemigo atacó con TIERRA - GANASTE 🎉</p>
+        </section>
+
+        <section id="reiniciar">
+            <button id="boton-reiniciar">Reiniciar</button>
+        </section>
+
+				<script src="./js/mokepon.js"></script>
+    </body>
+</html>
+```
+
+##### JavaScript:
+```js
+function iniciarJuego() {
+  let botonMascotaJugador = document.getElementById("boton-mascota");
+  botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
+}
+function seleccionarMascotaJugador() {
+
+  let inputHipodoge = document.getElementById("hipodoge");
+  let inputCapipepo = document.getElementById("capipepo");
+  let inputRatigueya = document.getElementById("ratigueya");
+  let spanMascotaJugador = document.getElementById("mascota-jugador");
+	
+  if (inputHipodoge.checked) {
+    spanMascotaJugador.innerHTML = "Hipodoge";
+  } else if (inputCapipepo.checked) {
+    spanMascotaJugador.innerHTML = "Capipepo";
+  } else if (inputRatigueya.checked) {
+    spanMascotaJugador.innerHTML = "Ratigueya";
+  } else {
+    alert("Selecciona una mascota");
+  }
+}
+window.addEventListener("load", iniciarJuego);
+```
+
+### 22. Enemigos aleatorios
+
+Un metodo de ahorrar codigo es con los arreglos
+
+![Captura de pantalla_2022-07-27_19-23-21 (1).png](https://static.platzi.com/media/user_upload/Captura%20de%20pantalla_2022-07-27_19-23-21%20%281%29-fe548df4-72e6-4c59-9604-e37b20b76366.jpg)
+
+#### Codigo de la clase: 
+
+##### JavaScript  
+```js
+function iniciarJuego() {
+  let botonMascotaJugador = document.getElementById("boton-mascota");
+  botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
+}
+function seleccionarMascotaJugador() {
+
+  let inputHipodoge = document.getElementById("hipodoge");
+  let inputCapipepo = document.getElementById("capipepo");
+  let inputRatigueya = document.getElementById("ratigueya");
+  let spanMascotaJugador = document.getElementById("mascota-jugador");
+
+  if (inputHipodoge.checked) {
+    spanMascotaJugador.innerHTML = "Hipodoge";
+  } else if (inputCapipepo.checked) {
+    spanMascotaJugador.innerHTML = "Capipepo";
+  } else if (inputRatigueya.checked) {
+    spanMascotaJugador.innerHTML = "Ratigueya";
+  } else {
+    alert("Selecciona una mascota");
+  }
+  seleccionarMascotaEnemigo();
+}
+
+function seleccionarMascotaEnemigo() {
+  let ataqueAleatorio = aleatorio(1, 3);
+  let spanMascotaEnemigo = document.getElementById("mascota-enemigo");
+  if (ataqueAleatorio == 1) {
+    spanMascotaEnemigo.innerHTML = "Hipodoge";
+  } else if (ataqueAleatorio == 2) {
+    spanMascotaEnemigo.innerHTML = "Capipepo";
+  } else {
+    spanMascotaEnemigo.innerHTML = "Ratigueya";
+  }
+}
+function aleatorio(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+window.addEventListener("load", iniciarJuego);
+```
+
+### 23. Ataques en JavaScript
+
+Entendamos un poquito eso que nos comento el profe Juan David acerca de las variables globales, variables de función, variables locales y toda esa locura, bien llamado **SCOPE:**
+
+> Con JS tenemos varios tipos de scope:
+
+1. global
+2. scope de función
+3. scope de bloque.  
+    Aunque en realidad podríamos agregar otros dos: local y de módulo.  
+    –
+
+- **Alcance global:** Cuando declaramos variables fuera de cualquier función, automáticamente se convierte en una variable de alcance global.
+    
+- **Alcance de función:** Cada vez que creamos funciones, se crea automáticamente un nuevo scope dentro de la nueva función. Eso significa que cada vez que declaramos variables dentro de una función, esa variable tendrá alcance o visibilidad dentro de esa función y no se podrá acceder a ella fuera de la función.
+    
+- **Alcance de bloque:** el alcance de bloque llega a JS en 2015 con ES6, cuando se introducen let y const. Esto significa que cualquier variable declarada dentro de las llaves { } sólo pueden ser visibles dentro de ellas.
+    
+- **Alcance de Módulo:** Cuando creamos un nuevo módulo, todas las variables que estén dentro del archivo aunque se encuentren fuera de funciones o llaves, en teoría podrían ser consideradas como variables globales; sin embargo, esas variables sólo tienen alcance a nivel de módulo, excepto cuando importamos explícitamente el módulo en otro archivo.
+    
+
+---
+
+Información extraída de: [https://dev.to/voidrizoma/javascript-variables-tipos-de-dato-scope-y-el-hoisting-1fhb#:~:text=Con JS tenemos tres tipos de scope%3A 1),se convierte en una variable de alcance global](https://dev.to/voidrizoma/javascript-variables-tipos-de-dato-scope-y-el-hoisting-1fhb#:~:text=Con%20JS%20tenemos%20tres%20tipos%20de%20scope%3A%201%29,se%20convierte%20en%20una%20variable%20de%20alcance%20global).
+
+#### Código de la Clase:
+
+##### Javascript 
+```js
+let ataqueJugador;
+function iniciarJuego() {
+  let botonMascotaJugador = document.getElementById("boton-mascota");
+  botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
+  let botonFuego = document.getElementById("boton-fuego");
+  botonFuego.addEventListener("click", ataqueFuego);
+  let botonAgua = document.getElementById("boton-agua");
+  botonAgua.addEventListener("click", ataqueAgua);
+  let botonTierra = document.getElementById("boton-tierra");
+  botonTierra.addEventListener("click", ataqueTierra);
+}
+function seleccionarMascotaJugador() {
+  let inputHipodoge = document.getElementById("hipodoge");
+  let inputCapipepo = document.getElementById("capipepo");
+  let inputRatigueya = document.getElementById("ratigueya");
+  let spanMascotaJugador = document.getElementById("mascota-jugador");
+  if (inputHipodoge.checked) {
+    spanMascotaJugador.innerHTML = "Hipodoge";
+  } else if (inputCapipepo.checked) {
+    spanMascotaJugador.innerHTML = "Capipepo";
+  } else if (inputRatigueya.checked) {
+    spanMascotaJugador.innerHTML = "Ratigueya";
+  } else {
+    alert("Selecciona una mascota");
+  }
+  seleccionarMascotaEnemigo();
+}
+function seleccionarMascotaEnemigo() {
+  let ataqueAleatorio = aleatorio(1, 3);
+  let spanMascotaEnemigo = document.getElementById("mascota-enemigo");
+  if (ataqueAleatorio == 1) {
+    spanMascotaEnemigo.innerHTML = "Hipodoge";
+  } else if (ataqueAleatorio == 2) {
+    spanMascotaEnemigo.innerHTML = "Capipepo";
+  } else {
+    spanMascotaEnemigo.innerHTML = "Ratigueya";
+  }
+}
+function ataqueFuego() {
+  ataqueJugador = "FUEGO";
+  alert(ataqueJugador);
+}
+function ataqueAgua() {
+  ataqueJugador = "AGUA";
+  alert(ataqueJugador);
+}
+function ataqueTierra() {
+  ataqueJugador = "TIERRA";
+  alert(ataqueJugador);
+}
+function aleatorio(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+window.addEventListener("load", iniciarJuego);
+```
+
+### 24. Ataques aleatorios del enemigo
+
+
+Un detalle con los botones de ataque es que deberian habilitarse solamente cuando escojamos nuestra mascota.  
+Esto es muy facil, en el html cuando creamos los botones, le agregamos la propiedad **disabled**, así estarán deshabilitados en un inicio.  
+
+![Captura desde 2022-08-08 13-43-14.png](https://static.platzi.com/media/user_upload/Captura%20desde%202022-08-08%2013-43-14-880f8a67-8128-4f69-8f91-793ab79ab88e.jpg)
+
+Ahora nos vamos al javascript, por el momento tenemos la logica de los botones en la función iniciar juego, estas lineas las podemos mover a una función nueva llamada **habilitarBotonesAtaque()**, dicha función la utilizariamos al final de la función **seleccionarMascotaJugador()**.  
+En la función que creamos, vamos a ir por cada botón habilitandolo con la propiedad .disabled (la misma que colocamos en el html). Le colocamos que su valor sea false, ya que en un primer momento su valor es true. Nos quedaria de la siguiente forma:  
+
+![Captura desde 2022-08-08 13-46-11.png](https://static.platzi.com/media/user_upload/Captura%20desde%202022-08-08%2013-46-11-0d9c7b78-5b46-4b7a-9656-e56ea8a2f78e.jpg)
+
+Todo el código con el nuevo orden que le dimos quedaria así:  
+
+![Captura desde 2022-08-08 13-47-28.png](https://static.platzi.com/media/user_upload/Captura%20desde%202022-08-08%2013-47-28-5bf4fc56-9cc7-4dc8-baae-41ad0198e655.jpg)  
+
+![Captura desde 2022-08-08 13-48-35.png](https://static.platzi.com/media/user_upload/Captura%20desde%202022-08-08%2013-48-35-143a53e8-9a3d-4edf-b353-acce36cf91a2.jpg)
+
+#### Codigo de la clase
+
+##### JavaScript
+```js
+let ataqueJugador;
+let ataqueEnemigo;
+function iniciarJuego() {
+  let botonMascotaJugador = document.getElementById("boton-mascota");
+  botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
+  let botonFuego = document.getElementById("boton-fuego");
+  botonFuego.addEventListener("click", ataqueFuego);
+  let botonAgua = document.getElementById("boton-agua");
+  botonAgua.addEventListener("click", ataqueAgua);
+  let botonTierra = document.getElementById("boton-tierra");
+  botonTierra.addEventListener("click", ataqueTierra);
+}
+function seleccionarMascotaJugador() {
+  let inputHipodoge = document.getElementById("hipodoge");
+  let inputCapipepo = document.getElementById("capipepo");
+  let inputRatigueya = document.getElementById("ratigueya");
+  let spanMascotaJugador = document.getElementById("mascota-jugador");
+  if (inputHipodoge.checked) {
+    spanMascotaJugador.innerHTML = "Hipodoge";
+  } else if (inputCapipepo.checked) {
+    spanMascotaJugador.innerHTML = "Capipepo";
+  } else if (inputRatigueya.checked) {
+    spanMascotaJugador.innerHTML = "Ratigueya";
+  } else {
+    alert("Selecciona una mascota");
+  }
+  seleccionarMascotaEnemigo();
+}
+function seleccionarMascotaEnemigo() {
+  let mascotaAleatoria = aleatorio(1, 3);
+  let spanMascotaEnemigo = document.getElementById("mascota-enemigo");
+  if (mascotaAleatoria == 1) {
+    spanMascotaEnemigo.innerHTML = "Hipodoge";
+  } else if (mascotaAleatoria == 2) {
+    spanMascotaEnemigo.innerHTML = "Capipepo";
+  } else {
+    spanMascotaEnemigo.innerHTML = "Ratigueya";
+  }
+}
+function ataqueFuego() {
+  ataqueJugador = "FUEGO";
+  ataqueAleatorioEnemigo();
+}
+function ataqueAgua() {
+  ataqueJugador = "AGUA";
+  ataqueAleatorioEnemigo();
+}
+function ataqueTierra() {
+  ataqueJugador = "TIERRA";
+  ataqueAleatorioEnemigo();
+}
+function ataqueAleatorioEnemigo() {
+  let ataqueAleatorio = aleatorio(1, 3);
+  if (ataqueAleatorio == 1) {
+    ataqueEnemigo = "FUEGO";
+  } else if (ataqueAleatorio == 2) {
+    ataqueEnemigo = "AGUA";
+  } else {
+    ataqueEnemigo = "TIERRA";
+  }
+}
+function aleatorio(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+window.addEventListener("load", iniciarJuego);
+```
+
+### 25. Imprimiendo ataques del enemigo
+
+Les dejo el Link de la documentación utilizada en clase sobre el Document.createElement()
+
+[https://developer.mozilla.org/es/docs/Web/API/Document/createElement](https://developer.mozilla.org/es/docs/Web/API/Document/createElement)
+
+#### Código de la clase
+
+##### HTML 
+Solo eliminamos esta parte del codigo: 
+```html
+ <section id="mensajes">
+	<p>Tu mascota atacó con FUEGO, 
+	las mascota del enemigo atacó con TIERRA - GANASTE 🎉</p> 👈🏼👈🏼👈🏼
+ </section>
+
+```
+
+##### Javascript
+
+```js
+let ataqueJugador;
+let ataqueEnemigo;
+
+function iniciarJuego() {
+  let botonMascotaJugador = document.getElementById("boton-mascota");
+  botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
+  let botonFuego = document.getElementById("boton-fuego");
+  botonFuego.addEventListener("click", ataqueFuego);
+  let botonAgua = document.getElementById("boton-agua");
+  botonAgua.addEventListener("click", ataqueAgua);
+  let botonTierra = document.getElementById("boton-tierra");
+  botonTierra.addEventListener("click", ataqueTierra);
+}
+
+function seleccionarMascotaJugador() {
+  let inputHipodoge = document.getElementById("hipodoge");
+  let inputCapipepo = document.getElementById("capipepo");
+  let inputRatigueya = document.getElementById("ratigueya");
+  let spanMascotaJugador = document.getElementById("mascota-jugador");
+  if (inputHipodoge.checked) {
+    spanMascotaJugador.innerHTML = "Hipodoge";
+  } else if (inputCapipepo.checked) {
+    spanMascotaJugador.innerHTML = "Capipepo";
+  } else if (inputRatigueya.checked) {
+    spanMascotaJugador.innerHTML = "Ratigueya";
+  } else {
+    alert("Selecciona una mascota");
+  }
+  seleccionarMascotaEnemigo();
+}
+
+function seleccionarMascotaEnemigo() {
+  let mascotaAleatoria = aleatorio(1, 3);
+  let spanMascotaEnemigo = document.getElementById("mascota-enemigo");
+  if (mascotaAleatoria == 1) {
+    spanMascotaEnemigo.innerHTML = "Hipodoge";
+  } else if (mascotaAleatoria == 2) {
+    spanMascotaEnemigo.innerHTML = "Capipepo";
+  } else {
+    spanMascotaEnemigo.innerHTML = "Ratigueya";
+  }
+
+}
+function ataqueFuego() {
+  ataqueJugador = "FUEGO";
+  ataqueAleatorioEnemigo();
+}
+
+function ataqueAgua() {
+  ataqueJugador = "AGUA";
+  ataqueAleatorioEnemigo();
+}
+
+function ataqueTierra() {
+  ataqueJugador = "TIERRA";
+  ataqueAleatorioEnemigo();
+}
+
+function ataqueAleatorioEnemigo() {
+  let ataqueAleatorio = aleatorio(1, 3);
+  if (ataqueAleatorio == 1) {
+    ataqueEnemigo = "FUEGO";
+  } else if (ataqueAleatorio == 2) {
+    ataqueEnemigo = "AGUA";
+  } else {
+    ataqueEnemigo = "TIERRA";
+  }
+  crearMensaje();
+}
+
+function crearMensaje() {
+  let sectionMensajes = document.getElementById("mensajes");
+  let parrafo = document.createElement("p");
+  parrafo.innerHTML =
+    "Tu mascota" +
+     +
+    "atacó con " +
+    ataqueJugador +
+    ", las mascota del enemigo atacó con " +
+    ataqueEnemigo +
+    "- PENDIENTE";
+  sectionMensajes.appendChild(parrafo);
+}
+
+function aleatorio(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+window.addEventListener("load", iniciarJuego);
+```
+
+### 26. ¿Ganaste, perdiste o empataste?
+
+Descripción. let te permite declarar variables limitando su alcance (scope) al bloque, declaración, o expresión donde se está usando. a diferencia de la palabra clave var la cual define una variable global o local en una función sin importar el ámbito del bloque.
+
+1. Yo cree una variable global llamada **resultadoDelCombate**
+    
+2. Cree una función llamada **combate()** la cual se ejecuta dentro de la función **ataqueAleatoreoEnemigo()** Justo antes de la función **crearmensaje()**
+    
+3. La logica del combate es exactamente la misma del Piedra Papel o Tijera, donde por medio de los condicionales **if, else if** y **else** se define el resultado que se guarda en la variable global **resultadoDelCombate**.
+    
+4. Añado la variable global **resultadoDelCombate** dentro de mi parrafo en la funcion **crearMensaje()**
+    
+
+![Logica del combate.jpg](https://static.platzi.com/media/user_upload/Logica%20del%20combate-e723aa58-7249-44cc-979b-9b84e9574370.jpg)
+
+![Funciono.jpg](https://static.platzi.com/media/user_upload/Funciono-74d8905b-e77e-4929-ad2f-340820ec4e51.jpg)
+
+#### Codigo de la clase
+
+##### Javascript
+
+```js
+let ataqueJugador;
+let ataqueEnemigo;
+function iniciarJuego() {
+  let botonMascotaJugador = document.getElementById("boton-mascota");
+  botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
+  let botonFuego = document.getElementById("boton-fuego");
+  botonFuego.addEventListener("click", ataqueFuego);
+  let botonAgua = document.getElementById("boton-agua");
+  botonAgua.addEventListener("click", ataqueAgua);
+  let botonTierra = document.getElementById("boton-tierra");
+  botonTierra.addEventListener("click", ataqueTierra);
+}
+function seleccionarMascotaJugador() {
+  let inputHipodoge = document.getElementById("hipodoge");
+  let inputCapipepo = document.getElementById("capipepo");
+  let inputRatigueya = document.getElementById("ratigueya");
+  let spanMascotaJugador = document.getElementById("mascota-jugador");
+  if (inputHipodoge.checked) {
+    spanMascotaJugador.innerHTML = "Hipodoge";
+  } else if (inputCapipepo.checked) {
+    spanMascotaJugador.innerHTML = "Capipepo";
+  } else if (inputRatigueya.checked) {
+    spanMascotaJugador.innerHTML = "Ratigueya";
+  } else {
+    alert("Selecciona una mascota");
+  }
+  seleccionarMascotaEnemigo();
+}
+function seleccionarMascotaEnemigo() {
+  let mascotaAleatoria = aleatorio(1, 3);
+  let spanMascotaEnemigo = document.getElementById("mascota-enemigo");
+  if (mascotaAleatoria == 1) {
+    spanMascotaEnemigo.innerHTML = "Hipodoge";
+  } else if (mascotaAleatoria == 2) {
+    spanMascotaEnemigo.innerHTML = "Capipepo";
+  } else {
+    spanMascotaEnemigo.innerHTML = "Ratigueya";
+  }
+}
+function ataqueFuego() {
+  ataqueJugador = "FUEGO";
+  ataqueAleatorioEnemigo();
+}
+function ataqueAgua() {
+  ataqueJugador = "AGUA";
+  ataqueAleatorioEnemigo();
+}
+function ataqueTierra() {
+  ataqueJugador = "TIERRA";
+  ataqueAleatorioEnemigo();
+}
+function ataqueAleatorioEnemigo() {
+  let ataqueAleatorio = aleatorio(1, 3);
+  if (ataqueAleatorio == 1) {
+    ataqueEnemigo = "FUEGO";
+  } else if (ataqueAleatorio == 2) {
+    ataqueEnemigo = "AGUA";
+  } else {
+    ataqueEnemigo = "TIERRA";
+  }
+  combate();
+}
+function combate() {
+  if (ataqueEnemigo == ataqueJugador) {
+    crearMensaje("EMPATE");
+  } else if (ataqueJugador == "FUEGO" && ataqueEnemigo == "TIERRA") {
+    crearMensaje("GANASTE");
+  } else if (ataqueJugador == "AGUA" && ataqueEnemigo == "FUEGO") {
+    crearMensaje("GANASTE");
+  } else if (ataqueJugador == "TIERRA" && ataqueEnemigo == "AGUA") {
+    crearMensaje("GANASTE");
+  } else {
+    crearMensaje("PERDISTE");
+  }
+}
+function crearMensaje(resultado) {
+  let sectionMensajes = document.getElementById("mensajes");
+  let parrafo = document.createElement("p");
+  parrafo.innerHTML =
+    "Tu mascota atacó con " +
+    ataqueJugador +
+    ", las mascota del enemigo atacó con " +
+    ataqueEnemigo +
+    "- " +
+    resultado;
+  sectionMensajes.appendChild(parrafo);
+}
+function aleatorio(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+window.addEventListener("load", iniciarJuego);
+
+```
+
+### 27. Tablas de verdad
+
+Les comparto esta tabla que encontre en las clases de pensamiento lógico  
+
+![operadores lógicos.jpg](https://static.platzi.com/media/user_upload/operadores%20l%C3%B3gicos-cba32b62-51dd-46be-8307-064bb0176686.jpg)
+
+Tenemos apuntes de un compañero de la comunidad de Platzi
+[Apuntes](https://platzi.com/blog/tablas-verdad-reglas-ejemplos/)
+
+### 28. Creando el contador de vidas
+
+Nota: El doble guion significa que se le resta 1 al valor de la variable. Ejemplo:
+
+vidasJugador - -
+
+es una forma corta de escribir:
+
+vidasJugador = vidasJugador - 1;
+
+Dato: Pasa exactamente igual con la suma ->  
+vidasJuador = vidasJugador +1
+
+es lo mismo que decir  
+vidasJugador++
+
+![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9SwI4udMZq7saIdByBOKIrReMGXE10pesAw&usqp=CAU)
+
+#### Código de la clase 
+
+##### HTML
+
+Lo único que agregaremos en html es el id de las vidas de los jugadores
+```html
+ <h2>Elige tu ataque:</h2>
+
+            <p>Tu mascota <span id="mascota-jugador"></span> tiene <span id="vidas-jugador" 👈🏼👈🏼👈🏼👈🏼>3</span> vidas</p>
+            <p>Las mascota <span id="mascota-enemigo"></span> del enemigo tiene <span id="vidas-enemigo" 👈🏼👈🏼👈🏼👈🏼>3</span> vidas</p>
+```
+
+##### JavaScript
+```js
+et ataqueJugador;
+let ataqueEnemigo;
+let vidasJugador = 3;
+let vidasEnemigo = 3;
+
+function iniciarJuego() {
+  let botonMascotaJugador = document.getElementById("boton-mascota");
+  botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
+  let botonFuego = document.getElementById("boton-fuego");
+  botonFuego.addEventListener("click", ataqueFuego);
+  let botonAgua = document.getElementById("boton-agua");
+  botonAgua.addEventListener("click", ataqueAgua);
+  let botonTierra = document.getElementById("boton-tierra");
+  botonTierra.addEventListener("click", ataqueTierra);
+}
+function seleccionarMascotaJugador() {
+  let inputHipodoge = document.getElementById("hipodoge");
+  let inputCapipepo = document.getElementById("capipepo");
+  let inputRatigueya = document.getElementById("ratigueya");
+  let spanMascotaJugador = document.getElementById("mascota-jugador");
+  if (inputHipodoge.checked) {
+    spanMascotaJugador.innerHTML = "Hipodoge";
+  } else if (inputCapipepo.checked) {
+    spanMascotaJugador.innerHTML = "Capipepo";
+  } else if (inputRatigueya.checked) {
+    spanMascotaJugador.innerHTML = "Ratigueya";
+  } else {
+    alert("Selecciona una mascota");
+  }
+  seleccionarMascotaEnemigo();
+}
+function seleccionarMascotaEnemigo() {
+  let mascotaAleatoria = aleatorio(1, 3);
+  let spanMascotaEnemigo = document.getElementById("mascota-enemigo");
+  if (mascotaAleatoria == 1) {
+    spanMascotaEnemigo.innerHTML = "Hipodoge";
+  } else if (mascotaAleatoria == 2) {
+    spanMascotaEnemigo.innerHTML = "Capipepo";
+  } else {
+    spanMascotaEnemigo.innerHTML = "Ratigueya";
+  }
+}
+function ataqueFuego() {
+  ataqueJugador = "FUEGO";
+  ataqueAleatorioEnemigo();
+}
+function ataqueAgua() {
+  ataqueJugador = "AGUA";
+  ataqueAleatorioEnemigo();
+}
+function ataqueTierra() {
+  ataqueJugador = "TIERRA";
+  ataqueAleatorioEnemigo();
+}
+function ataqueAleatorioEnemigo() {
+  let ataqueAleatorio = aleatorio(1, 3);
+  if (ataqueAleatorio == 1) {
+    ataqueEnemigo = "FUEGO";
+  } else if (ataqueAleatorio == 2) {
+    ataqueEnemigo = "AGUA";
+  } else {
+    ataqueEnemigo = "TIERRA";
+  }
+  combate();
+}
+function combate() {
+  let spanVidasJugador = document.getElementById("vidas-jugador");
+  let spanVidasEnemigo = document.getElementById("vidas-enemigo");
+  if (ataqueEnemigo == ataqueJugador) {
+    crearMensaje("EMPATE");
+  } else if (ataqueJugador == "FUEGO" && ataqueEnemigo == "TIERRA") {
+    crearMensaje("GANASTE");
+    vidasEnemigo--;
+    spanVidasEnemigo.innerHTML = vidasEnemigo;
+  } else if (ataqueJugador == "AGUA" && ataqueEnemigo == "FUEGO") {
+    crearMensaje("GANASTE");
+    vidasEnemigo--;
+    spanVidasEnemigo.innerHTML = vidasEnemigo;
+  } else if (ataqueJugador == "TIERRA" && ataqueEnemigo == "AGUA") {
+    crearMensaje("GANASTE");
+    vidasEnemigo--;
+    spanVidasEnemigo.innerHTML = vidasEnemigo;
+  } else {
+    crearMensaje("PERDISTE");
+    vidasJugador--;
+    spanVidasJugador.innerHTML = vidasJugador;
+  }
+}
+function crearMensaje(resultado) {
+  let sectionMensajes = document.getElementById("mensajes");
+  let parrafo = document.createElement("p");
+  parrafo.innerHTML =
+    "Tu mascota atacó con " +
+    ataqueJugador +
+    ", las mascota del enemigo atacó con " +
+    ataqueEnemigo +
+    "- " +
+    resultado;
+  sectionMensajes.appendChild(parrafo);
+}
+function aleatorio(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+window.addEventListener("load", iniciarJuego);
+
+```
+
+### 29. ¿Quién ganó el juego?
+
+#### Codigo de la clase
+
+##### JavaScript
+```js
+let ataqueJugador;
+let ataqueEnemigo;
+let vidasJugador = 3;
+let vidasEnemigo = 3;
+function iniciarJuego() {
+  let botonMascotaJugador = document.getElementById("boton-mascota");
+  botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
+  let botonFuego = document.getElementById("boton-fuego");
+  botonFuego.addEventListener("click", ataqueFuego);
+  let botonAgua = document.getElementById("boton-agua");
+  botonAgua.addEventListener("click", ataqueAgua);
+  let botonTierra = document.getElementById("boton-tierra");
+  botonTierra.addEventListener("click", ataqueTierra);
+}
+function seleccionarMascotaJugador() {
+  let inputHipodoge = document.getElementById("hipodoge");
+  let inputCapipepo = document.getElementById("capipepo");
+  let inputRatigueya = document.getElementById("ratigueya");
+  let spanMascotaJugador = document.getElementById("mascota-jugador");
+  if (inputHipodoge.checked) {
+    spanMascotaJugador.innerHTML = "Hipodoge";
+  } else if (inputCapipepo.checked) {
+    spanMascotaJugador.innerHTML = "Capipepo";
+  } else if (inputRatigueya.checked) {
+    spanMascotaJugador.innerHTML = "Ratigueya";
+  } else {
+    alert("Selecciona una mascota");
+  }
+  seleccionarMascotaEnemigo();
+}
+function seleccionarMascotaEnemigo() {
+  let mascotaAleatoria = aleatorio(1, 3);
+  let spanMascotaEnemigo = document.getElementById("mascota-enemigo");
+  if (mascotaAleatoria == 1) {
+    spanMascotaEnemigo.innerHTML = "Hipodoge";
+  } else if (mascotaAleatoria == 2) {
+    spanMascotaEnemigo.innerHTML = "Capipepo";
+  } else {
+    spanMascotaEnemigo.innerHTML = "Ratigueya";
+  }
+}
+function ataqueFuego() {
+  ataqueJugador = "FUEGO";
+  ataqueAleatorioEnemigo();
+}
+function ataqueAgua() {
+  ataqueJugador = "AGUA";
+  ataqueAleatorioEnemigo();
+}
+function ataqueTierra() {
+  ataqueJugador = "TIERRA";
+  ataqueAleatorioEnemigo();
+}
+function ataqueAleatorioEnemigo() {
+  let ataqueAleatorio = aleatorio(1, 3);
+  if (ataqueAleatorio == 1) {
+    ataqueEnemigo = "FUEGO";
+  } else if (ataqueAleatorio == 2) {
+    ataqueEnemigo = "AGUA";
+  } else {
+    ataqueEnemigo = "TIERRA";
+  }
+  combate();
+}
+function combate() {
+  let spanVidasJugador = document.getElementById("vidas-jugador");
+  let spanVidasEnemigo = document.getElementById("vidas-enemigo");
+  if (ataqueEnemigo == ataqueJugador) {
+    crearMensaje("EMPATE");
+  } else if (ataqueJugador == "FUEGO" && ataqueEnemigo == "TIERRA") {
+    crearMensaje("GANASTE");
+    vidasEnemigo--;
+    spanVidasEnemigo.innerHTML = vidasEnemigo;
+  } else if (ataqueJugador == "AGUA" && ataqueEnemigo == "FUEGO") {
+    crearMensaje("GANASTE");
+    vidasEnemigo--;
+    spanVidasEnemigo.innerHTML = vidasEnemigo;
+  } else if (ataqueJugador == "TIERRA" && ataqueEnemigo == "AGUA") {
+    crearMensaje("GANASTE");
+    vidasEnemigo--;
+    spanVidasEnemigo.innerHTML = vidasEnemigo;
+  } else {
+    crearMensaje("PERDISTE");
+    vidasJugador--;
+    spanVidasJugador.innerHTML = vidasJugador;
+  }
+  revisarVidas();
+}
+function revisarVidas() {
+  if (vidasEnemigo == 0) {
+    crearMensajeFinal("FELICITACIONES! Ganaste :)");
+  } else if (vidasJugador == 0) {
+    crearMensajeFinal("Lo siento, perdiste :(");
+  }
+}
+function crearMensaje(resultado) {
+  let sectionMensajes = document.getElementById("mensajes");
+  let parrafo = document.createElement("p");
+  parrafo.innerHTML =
+    "Tu mascota atacó con " +
+    ataqueJugador +
+    ", las mascota del enemigo atacó con " +
+    ataqueEnemigo +
+    "- " +
+    resultado;
+  sectionMensajes.appendChild(parrafo);
+}
+function crearMensajeFinal(resultadoFinal) {
+  let sectionMensajes = document.getElementById("mensajes");
+  let parrafo = document.createElement("p");
+  parrafo.innerHTML = resultadoFinal;
+  sectionMensajes.appendChild(parrafo);
+}
+function aleatorio(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+window.addEventListener("load", iniciarJuego);
+
+```
+
+### 30. Reiniciando el juego
+
+l object `location` es parte de algo que algunas personas conocen como BOM (Browser Object Modal), que se diferencia del DOM.
+
+Si bien esto no esta estandarizado (por ejemplo no lo encontrarás en la MDN) a mi parecer es una buena manera de entenderlo.
+
+Al final preceden de window
+
+![1 K-CM7OV1lQnnACBeIcagSw.png](https://static.platzi.com/media/user_upload/1%20K-CM7OV1lQnnACBeIcagSw-9d3f8712-52dc-4d3f-bedc-6baa9286495b.jpg)
+
+#### Código de la Clase
+
+##### JavaScript
+
+```js
+let ataqueJugador;
+let ataqueEnemigo;
+let vidasJugador = 3;
+let vidasEnemigo = 3;
+
+function iniciarJuego() {
+  let botonMascotaJugador = document.getElementById("boton-mascota");
+  botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
+  let botonFuego = document.getElementById("boton-fuego");
+  botonFuego.addEventListener("click", ataqueFuego);
+  let botonAgua = document.getElementById("boton-agua");
+  botonAgua.addEventListener("click", ataqueAgua);
+  let botonTierra = document.getElementById("boton-tierra");
+  botonTierra.addEventListener("click", ataqueTierra);
+  let botonReiniciar = document.getElementById("boton-reiniciar");
+  botonReiniciar.addEventListener("click", reiniciarJuego);
+}
+function seleccionarMascotaJugador() {
+  let inputHipodoge = document.getElementById("hipodoge");
+  let inputCapipepo = document.getElementById("capipepo");
+  let inputRatigueya = document.getElementById("ratigueya");
+  let spanMascotaJugador = document.getElementById("mascota-jugador");
+  if (inputHipodoge.checked) {
+    spanMascotaJugador.innerHTML = "Hipodoge";
+  } else if (inputCapipepo.checked) {
+    spanMascotaJugador.innerHTML = "Capipepo";
+  } else if (inputRatigueya.checked) {
+    spanMascotaJugador.innerHTML = "Ratigueya";
+  } else {
+    alert("Selecciona una mascota");
+  }
+  seleccionarMascotaEnemigo();
+}
+function seleccionarMascotaEnemigo() {
+  let mascotaAleatoria = aleatorio(1, 3);
+  let spanMascotaEnemigo = document.getElementById("mascota-enemigo");
+  if (mascotaAleatoria == 1) {
+    spanMascotaEnemigo.innerHTML = "Hipodoge";
+  } else if (mascotaAleatoria == 2) {
+    spanMascotaEnemigo.innerHTML = "Capipepo";
+  } else {
+    spanMascotaEnemigo.innerHTML = "Ratigueya";
+  }
+}
+function ataqueFuego() {
+  ataqueJugador = "FUEGO";
+  ataqueAleatorioEnemigo();
+}
+function ataqueAgua() {
+  ataqueJugador = "AGUA";
+  ataqueAleatorioEnemigo();
+}
+function ataqueTierra() {
+  ataqueJugador = "TIERRA";
+  ataqueAleatorioEnemigo();
+}
+function ataqueAleatorioEnemigo() {
+  let ataqueAleatorio = aleatorio(1, 3);
+  if (ataqueAleatorio == 1) {
+    ataqueEnemigo = "FUEGO";
+  } else if (ataqueAleatorio == 2) {
+    ataqueEnemigo = "AGUA";
+  } else {
+    ataqueEnemigo = "TIERRA";
+  }
+  combate();
+}
+function combate() {
+  let spanVidasJugador = document.getElementById("vidas-jugador");
+  let spanVidasEnemigo = document.getElementById("vidas-enemigo");
+  if (ataqueEnemigo == ataqueJugador) {
+    crearMensaje("EMPATE");
+  } else if (ataqueJugador == "FUEGO" && ataqueEnemigo == "TIERRA") {
+    crearMensaje("GANASTE");
+    vidasEnemigo--;
+    spanVidasEnemigo.innerHTML = vidasEnemigo;
+  } else if (ataqueJugador == "AGUA" && ataqueEnemigo == "FUEGO") {
+    crearMensaje("GANASTE");
+    vidasEnemigo--;
+    spanVidasEnemigo.innerHTML = vidasEnemigo;
+  } else if (ataqueJugador == "TIERRA" && ataqueEnemigo == "AGUA") {
+    crearMensaje("GANASTE");
+    vidasEnemigo--;
+    spanVidasEnemigo.innerHTML = vidasEnemigo;
+  } else {
+    crearMensaje("PERDISTE");
+    vidasJugador--;
+    spanVidasJugador.innerHTML = vidasJugador;
+  }
+  revisarVidas();
+}
+function revisarVidas() {
+  if (vidasEnemigo == 0) {
+    crearMensajeFinal("FELICITACIONES! Ganaste :)");
+  } else if (vidasJugador == 0) {
+    crearMensajeFinal("Lo siento, perdiste :(");
+  }
+}
+function crearMensaje(resultado) {
+  let sectionMensajes = document.getElementById("mensajes");
+  let parrafo = document.createElement("p");
+  parrafo.innerHTML =
+    "Tu mascota atacó con " +
+    ataqueJugador +
+    ", las mascota del enemigo atacó con " +
+    ataqueEnemigo +
+    "- " +
+    resultado;
+  sectionMensajes.appendChild(parrafo);
+}
+function crearMensajeFinal(resultadoFinal) {
+  let sectionMensajes = document.getElementById("mensajes");
+  let parrafo = document.createElement("p");
+  parrafo.innerHTML = resultadoFinal;
+  sectionMensajes.appendChild(parrafo);
+  let botonFuego = document.getElementById("boton-fuego");
+  botonFuego.disabled = true;
+  let botonAgua = document.getElementById("boton-agua");
+  botonAgua.disabled = true;
+  let botonTierra = document.getElementById("boton-tierra");
+  botonTierra.disabled = true;
+}
+function reiniciarJuego() {
+  location.reload();
+}
+function aleatorio(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+window.addEventListener("load", iniciarJuego);
+```
+
+### 31. Ocultando elementos HTML con JS para mejorar la UX del juego
+
+#### Felicidades jugador
+
+---
+
+##### Has finalizado la sección _Desarrollando un juego con HTML y JavaScript_, descansa aquí.
+
+![download.jpg](https://static.platzi.com/media/user_upload/download-fffd4737-ed08-4d38-b25b-aa9dbeda7074.jpg)
+
+Por cierto, para deshabilitar los botones preferí crear una función para después llamarla en la función “crearMensajeFinal”, me parece más estético:
+
+```js
+function deshabilitarBotones(){
+    let botonFuego = document.getElementById("boton-fuego")
+    botonFuego.disabled = true
+
+    let botonAgua = document.getElementById("boton-agua")
+    botonAgua.disabled = true
+
+    let botonTierra = document.getElementById("boton-tierra")
+    botonTierra.disabled = true
+
+        let sectionReiniciar = document.getElementById("reiniciar")
+        sectionReiniciar.style.display = "block"
+}
+```
+
+#### Codigo de la clase
+
+##### JavaScript
+```js
+let ataqueJugador;
+let ataqueEnemigo;
+let vidasJugador = 3;
+let vidasEnemigo = 3;
+function iniciarJuego() {
+  let sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque");
+  sectionSeleccionarAtaque.style.display = "none";
+  let sectionReiniciar = document.getElementById("reiniciar");
+  sectionReiniciar.style.display = "none";
+  let botonMascotaJugador = document.getElementById("boton-mascota");
+  botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
+  let botonFuego = document.getElementById("boton-fuego");
+  botonFuego.addEventListener("click", ataqueFuego);
+  let botonAgua = document.getElementById("boton-agua");
+  botonAgua.addEventListener("click", ataqueAgua);
+  let botonTierra = document.getElementById("boton-tierra");
+  botonTierra.addEventListener("click", ataqueTierra);
+  let botonReiniciar = document.getElementById("boton-reiniciar");
+  botonReiniciar.addEventListener("click", reiniciarJuego);
+}
+function seleccionarMascotaJugador() {
+  let sectionSeleccionarMascota = document.getElementById(
+    "seleccionar-mascota"
+  );
+  sectionSeleccionarMascota.style.display = "none";
+  let sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque");
+  sectionSeleccionarAtaque.style.display = "block";
+  let inputHipodoge = document.getElementById("hipodoge");
+  let inputCapipepo = document.getElementById("capipepo");
+  let inputRatigueya = document.getElementById("ratigueya");
+  let spanMascotaJugador = document.getElementById("mascota-jugador");
+  if (inputHipodoge.checked) {
+    spanMascotaJugador.innerHTML = "Hipodoge";
+  } else if (inputCapipepo.checked) {
+    spanMascotaJugador.innerHTML = "Capipepo";
+  } else if (inputRatigueya.checked) {
+    spanMascotaJugador.innerHTML = "Ratigueya";
+  } else {
+    alert("Selecciona una mascota");
+  }
+  seleccionarMascotaEnemigo();
+}
+function seleccionarMascotaEnemigo() {
+  let mascotaAleatoria = aleatorio(1, 3);
+  let spanMascotaEnemigo = document.getElementById("mascota-enemigo");
+  if (mascotaAleatoria == 1) {
+    spanMascotaEnemigo.innerHTML = "Hipodoge";
+  } else if (mascotaAleatoria == 2) {
+    spanMascotaEnemigo.innerHTML = "Capipepo";
+  } else {
+    spanMascotaEnemigo.innerHTML = "Ratigueya";
+  }
+}
+function ataqueFuego() {
+  ataqueJugador = "FUEGO";
+  ataqueAleatorioEnemigo();
+}
+function ataqueAgua() {
+  ataqueJugador = "AGUA";
+  ataqueAleatorioEnemigo();
+}
+function ataqueTierra() {
+  ataqueJugador = "TIERRA";
+  ataqueAleatorioEnemigo();
+}
+function ataqueAleatorioEnemigo() {
+  let ataqueAleatorio = aleatorio(1, 3);
+  if (ataqueAleatorio == 1) {
+    ataqueEnemigo = "FUEGO";
+  } else if (ataqueAleatorio == 2) {
+    ataqueEnemigo = "AGUA";
+  } else {
+    ataqueEnemigo = "TIERRA";
+  }
+  combate();
+}
+function combate() {
+  let spanVidasJugador = document.getElementById("vidas-jugador");
+  let spanVidasEnemigo = document.getElementById("vidas-enemigo");
+  if (ataqueEnemigo == ataqueJugador) {
+    crearMensaje("EMPATE");
+  } else if (ataqueJugador == "FUEGO" && ataqueEnemigo == "TIERRA") {
+    crearMensaje("GANASTE");
+    vidasEnemigo--;
+    spanVidasEnemigo.innerHTML = vidasEnemigo;
+  } else if (ataqueJugador == "AGUA" && ataqueEnemigo == "FUEGO") {
+    crearMensaje("GANASTE");
+    vidasEnemigo--;
+    spanVidasEnemigo.innerHTML = vidasEnemigo;
+  } else if (ataqueJugador == "TIERRA" && ataqueEnemigo == "AGUA") {
+    crearMensaje("GANASTE");
+    vidasEnemigo--;
+    spanVidasEnemigo.innerHTML = vidasEnemigo;
+  } else {
+    crearMensaje("PERDISTE");
+    vidasJugador--;
+    spanVidasJugador.innerHTML = vidasJugador;
+  }
+  revisarVidas();
+}
+function revisarVidas() {
+  if (vidasEnemigo == 0) {
+    crearMensajeFinal("FELICITACIONES! Ganaste :)");
+  } else if (vidasJugador == 0) {
+    crearMensajeFinal("Lo siento, perdiste :(");
+  }
+}
+function crearMensaje(resultado) {
+  let sectionMensajes = document.getElementById("mensajes");
+  let parrafo = document.createElement("p");
+  parrafo.innerHTML =
+    "Tu mascota atacó con " +
+    ataqueJugador +
+    ", las mascota del enemigo atacó con " +
+    ataqueEnemigo +
+    "- " +
+    resultado;
+  sectionMensajes.appendChild(parrafo);
+}
+function crearMensajeFinal(resultadoFinal) {
+  let sectionMensajes = document.getElementById("mensajes");
+  let parrafo = document.createElement("p");
+  parrafo.innerHTML = resultadoFinal;
+  sectionMensajes.appendChild(parrafo);
+  let botonFuego = document.getElementById("boton-fuego");
+  botonFuego.disabled = true;
+  let botonAgua = document.getElementById("boton-agua");
+  botonAgua.disabled = true;
+  let botonTierra = document.getElementById("boton-tierra");
+  botonTierra.disabled = true;
+  let sectionReiniciar = document.getElementById("reiniciar");
+  sectionReiniciar.style.display = "block";
+}
+function reiniciarJuego() {
+  location.reload();
+}
+function aleatorio(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+window.addEventListener("load", iniciarJuego);
+
+```
+
+### Test de Desarrollando un juego con HTML y JavaScript
+
+1. Tienes varios labels que le indican al usuario qué está seleccionando con diferentes inputs de tipo radio. Pero al darle click a los labels, sus inputs correspondientes NO se seleccionan. ¿Cómo solucionarías este problema?
+
+👉🏼👉🏼👉🏼 ``Asignando el mismo valor en el atributo id de los inputs y el atributo for de sus labels correspondientes.``
+
+2. ¿Qué etiqueta de HTML le permite a los usuarios escribir lo que ellos quieran?
+
+👉🏼👉🏼👉🏼 ``input``
+
+3. ¿Qué significa maquetar una página web?
+
+👉🏼👉🏼👉🏼 ``Escribir su estructura en HTML y CSS. ``
+
+4. Tienes el siguiente código HTML:
+
+```html
+<button id="lanzar-ataque">¡Lanzar ataque!</button>
+```
+
+Necesitas ejecutar una alerta cada vez que los usuarios le den click a este botón.
+
+¿Cómo lo harías?
+
+👉🏼👉🏼👉🏼
+
+```js
+let botonLanzarAtaque = document.getElementById('lanzar-ataque')
+
+function enviarAlerta() {
+    alert('Mensaje de la alerta')
+}
+
+botonLanzarAtaque.addEventListener('click', enviarAlerta)
+```
+
+## Estilos con CSS
+
+### 32. 
