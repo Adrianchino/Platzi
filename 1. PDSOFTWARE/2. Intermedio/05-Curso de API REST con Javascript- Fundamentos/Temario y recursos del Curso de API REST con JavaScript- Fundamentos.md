@@ -1740,7 +1740,7 @@ En resumen, DNS es un sistema utilizado en Internet para traducir nombres de dom
 
 15. Los HTTP Status Codes son un indicador confiable para saber qué tipo de respuesta entregarle a los usuarios.
 
-	- 📌 Falso
+	- 📌 Verdadero
 
 16. ¿Cuál es una de las diferencias entre una respuesta HTTP para humanos (usuarios) vs. para robots?
 
