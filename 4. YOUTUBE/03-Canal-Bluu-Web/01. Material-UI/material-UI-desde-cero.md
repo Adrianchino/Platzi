@@ -1,6 +1,5 @@
 # Material UI desde Cero
-
-## 01. ¡Domina la creación de interfaces atractivas!
+## 00 ¡Domina la creación de interfaces atractivas!
 
 ### Introducción
 
@@ -28,7 +27,7 @@ Incluye muchos componentes ya listos para usarse en producción y permite person
 | ------------ | ------------ |
 |  Incluye componentes listos para usar con estilos predeterminados y está optimizado para funcionar con librerías como Emotion. Es una solución completa para construir interfaces con diseño incorporado. |  En cambio, ofrece los mismos componentes pero sin estilos, funcionando como una versión "esquelética" o sin cabeza. Es la base sobre la que se construirá Material UI en el futuro, usando sus componentes y hooks como estructura principal.  |
 
-## 2. Instalación y configuraciones previas
+## 01. Instalación y configuraciones previas
 
 ### Instalación 
 
@@ -218,7 +217,7 @@ createRoot(document.getElementById('root')).render(
 
 ```
 
-## 03. Container y the "sx" prop (CSS fácil y rápido en tus componentes)
+## 02. Container y the "sx" prop (CSS fácil y rápido en tus componentes)
 
 ### Container
 
@@ -256,7 +255,7 @@ export const App = () => {
 };
 ```
 
-## 04: Typography
+## 03: Typography
 
 - #### [typography](https://mui.com/material-ui/react-typography/)
 
@@ -337,7 +336,7 @@ export const App = () => {
 };
 ```
 
-## 05. Box
+## 04. Box
 
 - El componente Box sirve como un componente contenedor para la mayoría de las necesidades de la utilidad CSS.
 - [box](https://mui.com/material-ui/react-box/)
@@ -390,7 +389,7 @@ export const App = () => {
 };
 ```
 
-## 06. Introducción a Theming
+## 05. Introducción a Theming
 
 Vamos a cambiar la personalización de nuestro tema por defecto.
 
@@ -461,7 +460,7 @@ createRoot(document.getElementById('root')).render(
 
 ```
 
-## 07. Button & Icons
+## 06. Button & Icons
 
 Compartiremos unos links para mas información y así echen un vistazo a la documentación  
 
@@ -523,7 +522,7 @@ export const App = () => {
 
 ```
 
-## 08. Grid
+## 07. Grid
 
 Se basa en 12 columnas al igual que Bootstrap. De esta manera podemos crear un layout responsive a través de Flexbox.
 
@@ -587,7 +586,7 @@ export default function App() {
 }
 ```  
 
-## 9. MiniPráctica Card Product
+## 08 MiniPráctica Card Product
 
 #### Documentación para practicar mas en los estilos de la libreria MUI
 
@@ -651,7 +650,7 @@ export default function Product() {
 }
 ``` 
 
-## 10. Card component
+## 09. Card component
 
 #### Documentación para practicar mas en los estilos de la libreria MUI
 
@@ -707,3 +706,1127 @@ export default function MyCard() {
 }
 ```
 
+
+## 10. Navbar responsive (Parte #01) List component
+
+#### Documentación para practicar mas en los estilos de la libreria MUI
+
+- [list mui](https://mui.com/material-ui/react-list/)
+
+#### aria-label:
+
+- El atributo aria-label es un atributo ARIA (Accessible Rich Internet Applications) que proporciona una descripción textual para un elemento.
+
+- En este caso, el valor "main mailbox folders" proporciona una descripción de la sección de navegación que contiene enlaces a las carpetas principales de correo. Esto puede ser útil para los usuarios que utilizan lectores de pantalla o tecnologías de asistencia para mejorar la accesibilidad.
+
+#### NavListDrawer.jsx: 
+
+```js
+import {
+  Divider,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+import { Box } from "@mui/system";
+
+import InboxIcon from "@mui/icons-material/Inbox";
+import DraftsIcon from "@mui/icons-material/Drafts";
+
+export default function NavListDrawer() {
+  return (
+    <Box sx={{ width: 250, bgcolor: "lightsalmon" }}>
+      <nav aria-label="main mailbox folders">
+        <List>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText primary="Inbox" />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <DraftsIcon />
+              </ListItemIcon>
+              <ListItemText primary="Draft" />
+            </ListItemButton>
+          </ListItem>
+        </List>
+      </nav>
+      <Divider />
+      <nav aria-label="secondary trash spam">
+        <List>
+          <ListItem disablePadding>
+            <ListItemButton
+              component="a"
+              href="#trash"
+            >
+              <ListItemText primary="Trash" />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton
+              component="a"
+              href="#spam"
+            >
+              <ListItemText primary="Spam" />
+            </ListItemButton>
+          </ListItem>
+        </List>
+      </nav>
+    </Box>
+  );
+}
+```
+
+#### Otra forma mas simplificada:
+
+```js
+import {
+  Divider,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+import { Box } from "@mui/system";
+
+import InboxIcon from "@mui/icons-material/Inbox";
+import DraftsIcon from "@mui/icons-material/Drafts";
+
+const mainList = [
+  {
+    text: "Inbox",
+    icon: <InboxIcon />,
+    href: "#inbox",
+  },
+  {
+    text: "Drafts",
+    icon: <DraftsIcon />,
+    href: "#drafts",
+  },
+];
+
+const secondaryList = [
+  {
+    text: "Trash",
+    href: "#trash",
+  },
+  {
+    text: "Spam",
+    href: "#spam",
+  },
+];
+
+export default function NavListDrawer() {
+  return (
+    <Box sx={{ width: 250, bgcolor: "lightsalmon" }}>
+      <nav aria-label="main mailbox folders">
+        <List>
+          {mainList.map((item) => (
+            <ListItem
+              disablePadding
+              key={item.text}
+            >
+              <ListItemButton
+                href={item.href}
+                component="a"
+              >
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.text} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      </nav>
+      <Divider />
+      <nav aria-label="secondary trash spam">
+        <List>
+          {secondaryList.map((item) => (
+            <ListItem
+              disablePadding
+              key={item.text}
+            >
+              <ListItemButton
+                component="a"
+                href={item.href}
+              >
+                <ListItemText primary={item.text} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      </nav>
+    </Box>
+  );
+}
+``` 
+
+
+## 11. Navbar responsive (Parte #02) Drawer component
+
+#### Documentación para practicar mas en los estilos de la libreria MUI
+
+- [drawer mui](https://mui.com/material-ui/react-drawer/)
+
+> **==role="presentation"==:**
+> 
+> **`role="presentation"`** es un atributo en HTML que indica que un elemento es solo decorativo, es decir, no tiene un significado importante ni función específica para los usuarios.
+> 
+> En **Material-UI**, se usa este atributo para señalar que un elemento solo sirve para mostrar algo visualmente, y que no debe ser interpretado como un botón, enlace u otro componente interactivo. Esto mejora la accesibilidad, ya que evita confusiones para tecnologías como lectores de pantalla.
+
+#### App.jsx :
+
+```js
+import { Container, Button, Drawer } from "@mui/material";
+import { useState } from "react";
+import NavListDrawer from "./components/NavListDrawer";
+
+export default function App() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Container sx={{ display: "grid", gap: 4 }}>
+      <Button
+        variant="contained"
+        onClick={() => setOpen(true)}
+      >
+        Open Drawer
+      </Button>
+
+      <Drawer
+        anchor="left"
+        open={open}
+        onClose={() => setOpen(false)}
+      >
+        <NavListDrawer onClick={() => setOpen(false)} />
+      </Drawer>
+    </Container>
+  );
+}
+```
+
+#### NavListDrawer.jsx :
+
+```js
+import {
+  Divider,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+import { Box } from "@mui/system";
+
+import InboxIcon from "@mui/icons-material/Inbox";
+import DraftsIcon from "@mui/icons-material/Drafts";
+
+export default function NavListDrawer() {
+  return (
+    <Box sx={{ width: 250, bgcolor: "lightsalmon" }}>
+      <nav aria-label="main mailbox folders">
+        <List>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText primary="Inbox" />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <DraftsIcon />
+              </ListItemIcon>
+              <ListItemText primary="Draft" />
+            </ListItemButton>
+          </ListItem>
+        </List>
+      </nav>
+      <Divider />
+      <nav aria-label="secondary trash spam">
+        <List>
+          <ListItem disablePadding>
+            <ListItemButton
+              component="a"
+              href="#trash"
+            >
+              <ListItemText primary="Trash" />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton
+              component="a"
+              href="#spam"
+            >
+              <ListItemText primary="Spam" />
+            </ListItemButton>
+          </ListItem>
+        </List>
+      </nav>
+    </Box>
+  );
+}
+```
+
+## 12. Navbar responsive (Parte #03) AppBar component
+
+#### Documentación para practicar mas en los estilos de la libreria MUI
+
+- [app-bar](https://mui.com/material-ui/react-app-bar/)
+- [material-icons](https://mui.com/material-ui/material-icons/)
+
+ **AppBar:** El atributo `position` en `AppBar` se utiliza para especificar la posición del AppBar. El valor **"static"** indica que la barra de aplicaciones se mantendrá en su posición original en la página, sin flotar o estar fijada en la parte superior de la página. Esto significa que la barra de aplicaciones no se moverá mientras se desplaza por la página.
+
+Los otros valores posibles para position son **"fixed"** y **"sticky"**, que fijan la barra de aplicaciones en la parte superior de la página mientras se desplaza por ella.
+
+Toolbar: proporciona un área de contenido para elementos como títulos, botones, menús, formularios y otros elementos. Además tiene configurado un `display: flex`.
+
+> **IconButton:** El atributo `edge` en `IconButton` se utiliza para especificar la ubicación de un botón con icono en un AppBar. En este caso se ubicará en la esquina superior izquierda.
+
+#### Ejemplo del codigo:
+
+```js
+import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material";
+
+import MenuIcon from "@mui/icons-material/Menu";
+
+export default function Navbar() {
+  return (
+    <AppBar position="static">
+      <Toolbar>
+        <IconButton
+          color="inherit"
+          size="large"
+          edge="start"
+          aria-label="menu"
+        >
+          <MenuIcon />
+        </IconButton>
+        <Typography
+          variant="h6"
+          sx={{ flexGrow: 1 }}
+        >
+          News
+        </Typography>
+        <Button color="inherit">Home</Button>
+        <Button color="inherit">Login</Button>
+      </Toolbar>
+    </AppBar>
+  );
+}
+```
+
+#### Ejemplo con Responsive para el Nav:
+
+```js
+import {
+  AppBar,
+  Box,
+  Button,
+  Drawer,
+  IconButton,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+import { NavListDrawer } from "./NavListDrawer";
+import { useState } from "react";
+import { AppRegistration, Home, Login, Menu } from "@mui/icons-material";
+
+const navLinks = [   <------- 
+  {
+    title: "Home",
+    path: "#",
+    icon: <Home />,
+  },
+  {
+    title: "Login",
+    path: "#login",
+    icon: <Login />,
+  },
+  {
+    title: "Register",
+    path: "#register",
+    icon: <AppRegistration />,
+  },
+];
+
+export const Nabvar = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            size="large"
+            onClick={() => setOpen(true)}
+            sx={{display: {sx: 'flex', sm: 'none'}}}   <----------
+            edge="start"
+          >
+            <Menu />
+          </IconButton>
+          <Typography variant="h7" sx={{ flexGrow: 1 }}>
+            News
+          </Typography>
+
+          <Box sx={{ display: {xs: "none", sm:"block"}}}>  <----------
+            {navLinks.map((item) => (     <---------
+              <Button
+                color="inherit"
+                key={item.title}
+                component="a"
+                href={item.path}
+              >
+                {item.title}
+              </Button>
+            ))}
+          </Box>
+        </Toolbar>
+      </AppBar>
+
+      <Drawer open={open} anchor="left" onClose={() => setOpen(false)} sx={{display: {sx: 'flex', sm: 'none'}}}>      <----------
+        <NavListDrawer navLinks={navLinks} />
+      </Drawer>
+    </>
+  );
+};
+``` 
+
+#### Ejemplo de NavListDrawer:
+
+```js
+import {
+  Box,
+  Divider,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+
+export const NavListDrawer = ({navLinks}) => {
+  return (
+    <Box
+      sx={{
+        width: 280,
+        maxWidth: 340,
+      }}
+    >
+      <nav>
+        <List>
+          {navLinks.map((item) => (      <---------
+            <ListItem disablePadding key={item.title}>
+              <ListItemButton component="a" href={item.path}>
+                <ListItemIcon>
+                  {item.icon}
+                </ListItemIcon>
+                <ListItemText>{item.title}</ListItemText>
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      </nav>
+    </Box>
+  );
+};
+
+```
+
+## 13. AppBar + React Router v.6 en Material UI (Navbar responsive)
+
+#### Documentación para practicar mas en los estilos de la libreria MUI
+
+- [Código final github](https://github.com/bluuweb/curso-mui-materil-ui-2023-code/tree/01-router)
+- [reactrouter](https://reactrouter.com/en/main)
+
+### Instalacion
+
+|`npm install react-router-dom@6`|   
+| --- |
+
+### BrowserRouter
+
+BrowserRouter es un componente que se utiliza en React para permitir la navegación por una aplicación web utilizando la [API de Historial HTML5]. Cuando se utiliza BrowserRouter, se establece una correspondencia entre las rutas definidas en la aplicación y las URL que se utilizan en el navegador.
+
+#### main.jsx
+
+```js
+import { BrowserRouter } from "react-router-dom";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <CssBaseline />
+        <App />
+      </BrowserRouter>
+    </ThemeProvider>
+  </React.StrictMode>
+);
+```
+
+### Routes & Route
+
+El componente `Routes` es el encargado de definir y organizar todas las rutas que puede manejar una aplicación. Dentro de él, se estructuran tanto las rutas principales como las secundarias, permitiendo controlar qué contenido se muestra según la URL. Es el contenedor general que agrupa todas las rutas mediante múltiples instancias del componente `Route`.
+
+Por su parte, el componente `Route` define una ruta específica. Utiliza la propiedad `path` para indicar la URL correspondiente y la propiedad `element` para determinar qué componente se renderizará al acceder a esa ruta. De este modo, cada `Route` asocia una dirección específica con un componente que se mostrará en la interfaz.
+
+#### App.jsx
+
+```js
+import { Route, Routes } from "react-router-dom";
+
+<Routes>
+  <Route
+    path="/"
+    element={<Home />}
+  />
+  <Route
+    path="/login"
+    element={<Login />}
+  />
+  <Route
+    path="/register"
+    element={<Register />}
+  />
+</Routes>
+```
+
+### NavLink
+
+El componente `NavLink` es un componente proporcionado por la librería "react-router-dom" que se utiliza para crear enlaces de navegación en una aplicación de React.
+
+#### Navbar.jsx
+
+```js
+import { NavLink } from "react-router-dom";
+
+// navegationLinks.map
+<Button
+  color="inherit"
+  key={item.title}
+  component={NavLink}
+  to={item.path}
+>
+  {item.title}
+</Button>
+
+// Drawer
+<NavListDrawer
+  navegationLinks={navegationLinks}
+  component={NavLink}
+  setOpen={setOpen}
+/>
+```
+
+#### NavListDrawer.jsx
+
+```js
+<ListItemButton
+  component={component}
+  to={item.path}
+  onClick={() => setOpen(false)}
+>
+```
+
+## 14. Crear alertas personalizadas con MUI (Alert, Snackbars y Notistack)
+
+### Alert
+
+- [alert mui](https://mui.com/material-ui/react-alert/)
+
+```js
+<Alert severity="error">This is an error alert — check it out!</Alert>
+<Alert severity="warning">This is a warning alert — check it out!</Alert>
+<Alert severity="info">This is an info alert — check it out!</Alert>
+<Alert severity="success">This is a success alert — check it out!</Alert>
+```
+
+#### Separación con grid
+
+```js
+<Box sx={{ display: "grid", gap: "1rem" }}>
+  <Alert severity="error">Esta es una alerta</Alert>
+  <Alert severity="warning">This is a warning alert — check it out!</Alert>
+  <Alert severity="info">This is an info alert — check it out!</Alert>
+  <Alert severity="success">This is a success alert — check it out!</Alert>
+</Box>
+```
+
+#### Con título
+
+```js
+<Alert severity="error">
+  <AlertTitle>Error</AlertTitle>
+  Esta es una alerta
+</Alert>
+```
+
+#### Actions
+
+```js
+import { Alert, Button, Collapse } from "@mui/material";
+import { Box } from "@mui/system";
+import { useState } from "react";
+
+export default function Home() {
+  const [open, setOpen] = useState(true);
+
+  return (
+    <>
+      <h1>Home</h1>
+      <Box sx={{ display: "grid", gap: "1rem" }}>
+        <Alert
+          severity="warning"
+          action={<Button color="inherit">Cerrar</Button>}
+        >
+          This is a warning alert — check it out!
+        </Alert>
+        <Collapse in={open}>
+          <Alert
+            severity="info"
+            onClose={() => {
+              setOpen(false);
+            }}
+          >
+            This is an info alert — check it out!
+          </Alert>
+        </Collapse>
+        <Alert
+          severity="warning"
+          action={<Button color="inherit">Cerrar</Button>}
+        >
+          This is a warning alert — check it out!
+        </Alert>
+      </Box>
+    </>
+  );
+}
+```
+
+#### Dos botones
+
+```js
+<Alert
+  severity="warning"
+  action={
+    <>
+      <Button color="primary">Update</Button>
+      <Button color="error">Delete</Button>
+    </>
+  }
+>
+  This is a warning alert — check it out!
+</Alert>
+```
+
+[Icon](https://mui.com/material-ui/material-icons/)
+
+```js
+import { Alert } from "@mui/material";
+import AutorenewIcon from "@mui/icons-material/Autorenew";
+
+export default function Home() {
+  return (
+    <>
+      <h1>Home</h1>
+      <Alert
+        severity="warning"
+        icon={<AutorenewIcon fontSize="inherit" />}
+      >
+        This is a warning alert — check it out!
+      </Alert>
+    </>
+  );
+}
+```
+
+#### Variante: outlined & filled
+
+```js
+<Alert
+  severity="warning"
+  variant="outlined"
+>
+  This is a warning alert — check it out!
+</Alert>z
+```
+
+### Snackbars
+
+- [Snackbar MUI](https://mui.com/material-ui/react-snackbar/)
+
+```js
+import { Alert, Button, Snackbar } from "@mui/material";
+import { useState } from "react";
+
+export default function Home() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <h1>Home</h1>
+
+      <Button
+        onClick={() => setOpen(true)}
+        variant="contained"
+      >
+        Open
+      </Button>
+
+      <Snackbar
+        open={open}
+        autoHideDuration={1000}
+        onClose={() => setOpen(false)}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      >
+        <Alert
+          severity="warning"
+          variant="filled"
+        >
+          This is a warning alert — check it out!
+        </Alert>
+      </Snackbar>
+    </>
+  );
+}
+```
+
+### notistack
+
+- [notistack](https://github.com/iamhosseindhv/notistack)
+- [config notistack](https://notistack.com/features/basic)
+
+```
+npm i notistack
+```
+
+```js
+import { SnackbarProvider } from "notistack";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <CssBaseline />
+    <ThemeProvider theme={theme}>
+      <SnackbarProvider
+        maxSnack={3}
+        autoHideDuration={2000}
+      >
+        <App />
+      </SnackbarProvider>
+    </ThemeProvider>
+  </React.StrictMode>
+);
+```
+
+En el componente donde se quiere usar:
+
+```js
+import { useSnackbar } from "notistack";
+```
+
+```js
+const { enqueueSnackbar } = useSnackbar();
+
+const handleClick = () => {
+  enqueueSnackbar("Product added to cart", {
+    variant: "success",
+    anchorOrigin: {
+      vertical: "top",
+      horizontal: "right",
+    },
+  });
+};
+
+// anchorOrigin:
+// Type: { horizontal: left | center | right, vertical: top | bottom }
+// Default: { horizontal: left, vertical: bottom }
+
+// variant:
+// Type: default | error | success | warning | info
+// Default: default
+```
+
+```js
+<Button
+  variant="contained"
+  onClick={handleClick}
+>
+  Add cart
+</Button>
+```
+
+### mui/lab
+
+- [Loading Button mui](https://mui.com/material-ui/react-button/#experimental-api)
+- [about-the-lab](https://mui.com/material-ui/about-the-lab/)
+
+```js
+npm install @mui/lab
+```
+
+```js
+import LoadingButton from "@mui/lab/LoadingButton";
+```
+
+```js
+const { enqueueSnackbar } = useSnackbar();
+const [loading, setLoading] = useState(false);
+
+const handleClick = () => {
+  setLoading(true);
+
+  setTimeout(() => {
+    setLoading(false);
+    enqueueSnackbar("Product added to cart", {
+      variant: "success",
+      anchorOrigin: {
+        vertical: "top",
+        horizontal: "right",
+      },
+    });
+  }, 2000);
+};
+```
+
+```js
+<LoadingButton
+  variant="contained"
+  onClick={handleClick}
+  loading={loading}
+>
+  Add cart
+</LoadingButton>
+```
+
+## 15. Text Field y Validación de Formulario
+
+### Text Field
+
+- [Text Field](https://mui.com/material-ui/react-text-field/)
+
+```js
+<TextField
+  id="outlined-basic"
+  label="Outlined"
+  variant="outlined"
+/>
+```
+
+Formulario:
+
+```js
+import { Box, Button, TextField } from "@mui/material";
+import { useState } from "react";
+
+export default function Register() {
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState({
+    error: false,
+    message: "",
+  });
+
+  const emailValidation = (email) => {
+    // expresion regular para validar email
+    const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    return regex.test(email);
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (!emailValidation(email)) {
+      setError({
+        error: true,
+        message: "El email no es valido",
+      });
+      return;
+    }
+    console.log(email);
+    setError({
+      error: false,
+      message: "",
+    });
+  };
+
+  return (
+    <>
+      <h1>Register</h1>
+      <Box
+        component="form"
+        onSubmit={onSubmit}
+        autoComplete="off"
+      >
+        <TextField
+          label="Email"
+          variant="outlined"
+          id="email"
+          type="email"
+          fullWidth
+          required
+          error={error.error}
+          helperText={error.message}
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
+        />
+        <Button
+          variant="outlined"
+          type="submit"
+          sx={{ mt: 2 }}
+        >
+          Submit
+        </Button>
+      </Box>
+    </>
+  );
+}
+```
+
+## 16. Práctica Weather App
+
+### Links
+
+- [weatherapi.com](https://www.weatherapi.com/)
+- [variables de entorno en Vite](https://vitejs.dev/guide/env-and-mode.html)
+
+### Install
+
+```js
+npm create vite@latest .
+npm i
+```
+
+```js
+npm install @mui/material @emotion/react @emotion/styled @fontsource/roboto @mui/icons-material @mui/lab notistack
+```
+
+#### main.jsx
+
+```js
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+import "./index.css";
+
+import { CssBaseline } from "@mui/material";
+import { SnackbarProvider } from "notistack";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <CssBaseline />
+    <SnackbarProvider>
+      <App />
+    </SnackbarProvider>
+  </React.StrictMode>
+);
+```
+
+### .env.local
+
+```js
+VITE_API_KEY=YOUR_API_KEY
+```
+
+```js
+console.log(import.meta.env.VITE_API_KEY);
+```
+
+### API
+
+- [query](https://www.weatherapi.com/docs/#intro-request)
+
+```js
+https://api.weatherapi.com/v1/current.json?key=tuApiKey&lang=es&q=london
+```
+
+```js
+const API_WEATHER = `http://api.weatherapi.com/v1/current.json?key=${
+  import.meta.env.VITE_API_KEY
+}&lang=es&q=`;
+```
+
+### Code
+
+App.jsx
+
+```js
+import { LoadingButton } from "@mui/lab";
+import { Box, Container, TextField, Typography } from "@mui/material";
+import { useState } from "react";
+
+const API_WEATHER = `http://api.weatherapi.com/v1/current.json?key=${
+  import.meta.env.VITE_API_KEY
+}&lang=es&q=`;
+
+export default function App() {
+  const [city, setCity] = useState("");
+  const [error, setError] = useState({
+    error: false,
+    message: "",
+  });
+  const [loading, setLoading] = useState(false);
+
+  const [weather, setWeather] = useState({
+    city: "",
+    country: "",
+    temperature: 0,
+    condition: "",
+    conditionText: "",
+    icon: "",
+  });
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    setError({ error: false, message: "" });
+    setLoading(true);
+
+    try {
+      if (!city.trim()) throw { message: "El campo ciudad es obligatorio" };
+
+      const res = await fetch(API_WEATHER + city);
+      const data = await res.json();
+
+      if (data.error) {
+        throw { message: data.error.message };
+      }
+
+      console.log(data);
+
+      setWeather({
+        city: data.location.name,
+        country: data.location.country,
+        temperature: data.current.temp_c,
+        condition: data.current.condition.code,
+        conditionText: data.current.condition.text,
+        icon: data.current.condition.icon,
+      });
+    } catch (error) {
+      console.log(error);
+      setError({ error: true, message: error.message });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <Container
+      maxWidth="xs"
+      sx={{ mt: 2 }}
+    >
+      <Typography
+        variant="h3"
+        component="h1"
+        align="center"
+        gutterBottom
+      >
+        Weather App
+      </Typography>
+      <Box
+        sx={{ display: "grid", gap: 2 }}
+        component="form"
+        autoComplete="off"
+        onSubmit={onSubmit}
+      >
+        <TextField
+          id="city"
+          label="Ciudad"
+          variant="outlined"
+          size="small"
+          required
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+          error={error.error}
+          helperText={error.message}
+        />
+
+        <LoadingButton
+          type="submit"
+          variant="contained"
+          loading={loading}
+          loadingIndicator="Buscando..."
+        >
+          Buscar
+        </LoadingButton>
+      </Box>
+
+      {weather.city && (
+        <Box
+          sx={{
+            mt: 2,
+            display: "grid",
+            gap: 2,
+            textAlign: "center",
+          }}
+        >
+          <Typography
+            variant="h4"
+            component="h2"
+          >
+            {weather.city}, {weather.country}
+          </Typography>
+          <Box
+            component="img"
+            alt={weather.conditionText}
+            src={weather.icon}
+            sx={{ margin: "0 auto" }}
+          />
+          <Typography
+            variant="h5"
+            component="h3"
+          >
+            {weather.temperature} °C
+          </Typography>
+          <Typography
+            variant="h6"
+            component="h4"
+          >
+            {weather.conditionText}
+          </Typography>
+        </Box>
+      )}
+
+      <Typography
+        textAlign="center"
+        sx={{ mt: 2, fontSize: "10px" }}
+      >
+        Powered by:{" "}
+        <a
+          href="https://www.weatherapi.com/"
+          title="Weather API"
+        >
+          WeatherAPI.com
+        </a>
+      </Typography>
+    </Container>
+  );
+}
+```
+
+⭐ Apoya el canal ⭐
+
+Si quieres demostrar todo tu amor 😊, puedes comprar el curso en 👉🏽 [Udemy: React + Firebase by bluuweb](https://bit.ly/3JCSsht).
+
+## 17. 💀 Skeleton
+
+- [react-skeleton mui](https://mui.com/material-ui/react-skeleton/)
+- [código tutorial](https://github.com/bluuweb/simple-skeleton-mui-react-rick-and-morty)
+
+
+---
+
+Agradecer a BluuWeb por compartir un curso y dejarnos una buena enseñanza con el tema de Material MUI. Visiten su [canal](https://www.youtube.com/@bluuweb)  y el [curso](https://www.youtube.com/playlist?list=PLPl81lqbj-4J2xx_YAb97dpCG1rxl2wv-) que nos ha brindado
